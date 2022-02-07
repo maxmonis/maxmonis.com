@@ -24,7 +24,7 @@ const IndexPage = () => {
             border-radius: 25px;
           }
           h1 {
-            margin-top: 10rem;
+            margin: 5rem 0;
           }
           h3 {
             margin: 5rem auto;
@@ -32,10 +32,12 @@ const IndexPage = () => {
           p {
             margin-bottom: 10rem;
           }
-          @media (min-width: 992px) {
+          @media (min-width: 768px) {
             h1 {
               font-size: 4rem;
             }
+          }
+          @media (min-width: 992px) {
             h2 {
               font-size: 3rem;
             }
@@ -45,11 +47,12 @@ const IndexPage = () => {
           }
         `}
       >
-        <h1>Toronto-based web developer</h1>
-        <h3>Passionate about creating pixel-perfect responsive user interfaces</h3>
+        <h3>
+          Passionate about creating pixel-perfect responsive user interfaces
+        </h3>
         <img src={photo} alt={"Max Monis"} />
         <p>Not really Tom Hardy (sorry)</p>
-        <h3>Here are some samples of my work:</h3>
+        <h1>Portfolio</h1>
       </div>
       {websites.map((website, i) => (
         <Website key={website.url} website={website} i={i} />

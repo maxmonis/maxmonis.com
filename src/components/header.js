@@ -9,15 +9,16 @@ const Container = styled.header`
   display: flex;
   flex: row;
   a {
-    padding: 1rem 0 0 5%;
+    margin: 1rem 0 0 5%;
   }
   span {
     padding: 2rem 5%;
     margin: 0 0 0 auto;
     a {
-      padding: 1rem 1rem 0;
+      margin: 1rem 1rem 0;
       &.email {
-        padding: 1rem;
+        margin: 0;
+        padding: 0.5rem;
         border: solid 2px var(--blue);
         border-radius: 8px;
         max-width: 200px;
@@ -26,7 +27,7 @@ const Container = styled.header`
   }
 `
 const Image = styled.img`
-  height: 55px;
+  height: 50px;
 `
 
 const Header = ({ title }) => {

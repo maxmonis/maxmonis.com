@@ -3,21 +3,19 @@ import PropTypes from "prop-types"
 import Image from "gatsby-image"
 import { css } from "@emotion/core"
 
-const Website = ({ website, i }) => {
+const Website = ({ website }) => {
   const { title, text, url, image, github } = website
-  const primary = i % 2 ? "var(--blue)" : "white"
-  const secondary = i % 2 ? "white" : "var(--blue)"
   return (
     <div
       css={css`
-        background-color: ${primary};
+        background-color: white;
         display: inline-block;
         justify-content: center;
         margin-bottom: 2rem;
         padding: 1rem 1rem 3rem;
         h1,
         p {
-          color: ${secondary};
+          color: $var(--blue);
         }
         h1 {
           margin: 1rem 0;
@@ -33,7 +31,7 @@ const Website = ({ website, i }) => {
       <div
         css={css`
           max-width: 1025px;
-          @media (min-width: 768px) {
+          @media (min-width: 992px) {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             column-gap: 1rem;
@@ -48,7 +46,7 @@ const Website = ({ website, i }) => {
         <a target="_blank" rel="noreferrer" href={url}>
           <div
             css={css`
-              border: 2px solid ${secondary};
+              border: 2px solid var(--blue);
             `}
           >
             <Image fluid={image.fluid} />
@@ -58,17 +56,21 @@ const Website = ({ website, i }) => {
           css={css`
             a {
               max-width: 275px;
-              color: ${secondary};
+              color: var(--blue);
               padding: 1rem 2rem;
-              border: 2px solid ${secondary};
+              border: 2px solid var(--blue);
             }
             p {
-              margin: 1rem 0 2rem;
+              margin: 1.5rem 0 3rem;
               padding: 0 1rem;
+              text-align: left;
             }
             @media (min-width: 768px) {
+              font-size: 20px;
+            }
+            @media (min-width: 992px) {
               position: relative;
-              margin-top: 1rem;
+              margin-top: 2rem;
               p {
                 margin: 0;
                 padding: 0 2rem 0 1rem;
@@ -78,12 +80,6 @@ const Website = ({ website, i }) => {
                 bottom: 2rem;
                 width: 100%;
               }
-            }
-            @media (min-width: 900px) {
-              font-size: 20px;
-            }
-            @media (min-width: 992px) {
-              margin-top: 2rem;
             }
           `}
         >
@@ -101,7 +97,6 @@ const Website = ({ website, i }) => {
 
 Website.propTypes = {
   website: PropTypes.object.isRequired,
-  i: PropTypes.number.isRequired,
 }
 
 export default Website

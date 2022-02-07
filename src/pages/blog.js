@@ -47,7 +47,10 @@ const Blog = () => {
       />
       <label>
         Sort by{" "}
-        <select onChange={e => setOrder(e.target.value)}>
+        <select onChange={e => setOrder(e.target.value)}
+        css={css`
+          padding: 0.5rem;
+        `}>
           <option value="newest">Newest</option>
           <option value="oldest">Oldest</option>
         </select>

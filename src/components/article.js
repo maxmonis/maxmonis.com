@@ -73,9 +73,21 @@ const Article = ({
         <Image fluid={image.fluid} />
         <h3>{date}</h3>
         <h4>{minRead} minute read</h4>
-        {text.split(/\r|\n/).map((paragraph, i) => (
-          <p key={i}>{paragraph}</p>
-        ))}
+        <div
+          css={css`
+            text-align: left;
+            max-width: 1000px;
+            @media (min-width: 768px) {
+              p {
+                font-size: 1.2rem;
+              }
+            }
+          `}
+        >
+          {text.split(/\r|\n/).map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+          ))}
+        </div>
       </main>
       <div
         css={css`

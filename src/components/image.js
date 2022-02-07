@@ -49,7 +49,7 @@ const Image = () => {
         <Container>
           <h2>Good {greeting} and welcome!</h2>
           <h1>My name is Max</h1>
-          <h3>I build websites</h3>
+          <h3>I'm a frontend web developer</h3>
         </Container>
       </Background>
       <p>{copyright}</p>
