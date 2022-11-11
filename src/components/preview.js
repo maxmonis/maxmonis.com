@@ -1,55 +1,24 @@
-import React from "react"
-import PropTypes from "prop-types"
+import "./styles/_preview.scss"
 import { Link } from "gatsby"
-import Image from "gatsby-image"
-import { css } from "@emotion/core"
 import formatDistanceToNow from "date-fns/formatDistanceToNow"
+import Image from "gatsby-image"
+import PropTypes from "prop-types"
+import React from "react"
 
 const Preview = ({ article }) => {
   const { title, blurb, slug, image, published } = article
   return (
-    <div
-      css={css`
-        border: 1px solid #e1e1e1;
-        margin-bottom: 2rem;
-        display: inline-block;
-        width: 100%;
-        max-width: 400px;
-        justify-content: center;
-        padding: 1rem;
-        h1 {
-          padding-bottom: 1rem;
-        }
-        p {
-          padding-top: 1rem;
-        }
-        @media (min-width: 576px) {
-          width: 250px;
-          margin: 10px;
-        }
-      `}
-    >
+    <div className="Preview">
       <Link to={`../blog/${slug}`}>
-        <h1>{title}</h1>
+        <h5 className="Preview__title">{title}</h5>
         <div>
-          <div
-            css={css`
-              max-height: 275px;
-              img {
-                max-height: 275px;
-              }
-              @media (min-width: 576px) {
-                max-height: 150px;
-                img {
-                  max-height: 150px;
-                }
-              }
-            `}
-          >
-            <Image fluid={image.fluid} />
+          <div className="Preview__image-container">
+            <Image className="Preview__image" fluid={image.fluid} />
           </div>
-          <p>{blurb}</p>
-          <p>Published {formatDistanceToNow(new Date(published))} ago</p>
+          <p className="Preview__text">{blurb}</p>
+          <p className="Preview__text">
+            Published {formatDistanceToNow(new Date(published))} ago
+          </p>
         </div>
       </Link>
     </div>

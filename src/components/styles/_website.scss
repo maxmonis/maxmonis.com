@@ -1,0 +1,52 @@
+.Website {
+  background-color: white;
+  color: var(--blue);
+  display: inline-block;
+  justify-content: center;
+  margin-bottom: 5rem;
+  padding: 1rem 1rem 3rem;
+
+  &__description {
+    margin-block: 1rem 3rem;
+    padding: 0 1rem;
+    text-align: left;
+  }
+
+  &__title {
+    margin-block: 1rem;
+  }
+
+  &__image-container {
+    border: 2px solid var(--blue);
+  }
+
+  &__link {
+    max-width: 275px;
+    color: var(--blue);
+    padding: 1rem 2rem;
+    border: 2px solid var(--blue);
+  }
+
+  &__content {
+    max-width: 500px;
+  }
+
+  @media (min-width: 768px) {
+    &__content {
+      gap: 1rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      max-width: 1025px;
+      padding-left: 1rem;
+    }
+
+    &__description {
+      margin: 0;
+    }
+
+    &__link-container {
+      margin-top: 3rem;
+      width: 100%;
+    }
+  }
+}

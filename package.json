@@ -1,9 +1,8 @@
 {
-  "name": "max-monis",
-  "private": true,
-  "description": "Toronto based web developer",
-  "version": "0.1.0",
   "author": "Max Monis <mmonis77@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
   "dependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
@@ -16,6 +15,7 @@
     "gatsby-plugin-manifest": "^2.4.30",
     "gatsby-plugin-offline": "^3.2.28",
     "gatsby-plugin-react-helmet": "^3.3.11",
+    "gatsby-plugin-sass": "^5.25.0",
     "gatsby-plugin-sharp": "^2.6.36",
     "gatsby-source-datocms": "^2.5.4",
     "gatsby-source-filesystem": "^2.3.30",
@@ -23,8 +23,10 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "sass": "^1.57.1"
   },
+  "description": "Toronto based web developer",
   "devDependencies": {
     "prettier": "2.1.1"
   },
@@ -32,20 +34,20 @@
     "gatsby"
   ],
   "license": "0BSD",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
+  "name": "max-monis",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/maxmonis/personal"
   },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  }
+  "scripts": {
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "serve": "gatsby serve",
+    "start": "npm run develop",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "version": "1.0.0"
 }

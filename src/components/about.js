@@ -1,66 +1,46 @@
-import React from "react"
+import "./styles/_about.scss"
 import { Link } from "gatsby"
-import { css } from "@emotion/core"
+import React from "react"
+import photo from "../images/max.jpg"
 
-const About = () => {
+export default function About() {
   return (
-    <div
-      css={css`
-        max-width: 90%;
-        margin-top: 3rem;
-        h3 {
-          margin: 2rem 0 1rem;
-        }
-        p {
-          margin: 0.5rem 0;
-        }
-        @media (min-width: 768px) {
-          h3 {
-            font-size: 1.6rem;
-          }
-          p {
-            font-size: 1.2rem;
-          }
-        }
-      `}
-    >
-      <h1>About Me</h1>
-      <h3>Biography</h3>
-      <p>Sports &#10132; Music &#10132; Fitness &#10132; Software</p>
-      <h3>Technologies</h3>
-      <p>HTML, CSS, JavaScript, TypeScript</p>
-      <p>Less, Emotion, Bootstrap, Tailwind</p>
-      <p>React, Next, Gatsby, Angular</p>
-      <p>Node, Express, Mongoose</p>
-      <h3>Contact</h3>
-      <p>
-        I currently work at{" "}
-        <a href={`https://sowingo.com/`}>
-          <b>Sowingo</b>
-        </a>
-        . Feel free to{" "}
-        <a href={`mailto:mmonis77@gmail.com`}>
-          <b>say hi</b>
-        </a>
-        .
-      </p>
-      <div
-        css={css`
-          margin-top: 5rem;
-          text-align: center;
-          text-transform: uppercase;
-          a {
-            font-size: 20px;
-            :hover {
-              border-bottom: 1px solid var(--blue);
-            }
-          }
-        `}
-      >
-        <Link to="/blog">Blog</Link>
+    <div className="About">
+      <h2 className="About__title">About Me</h2>
+      <div className="About__content">
+        <div className="About__image-container">
+          <img className="About__image" src={photo} alt={"Max Monis"} />
+          <p className="About__image-caption">Not really Tom Hardy (sorry)</p>
+        </div>
+        <div className="About__info">
+          <h6 className="About__subtitle">Biography</h6>
+          <p className="About__text">
+            Sports &#10132; Music &#10132; Fitness &#10132; Software
+          </p>
+          <h6 className="About__subtitle">Technologies</h6>
+          <p className="About__text">HTML, CSS, JavaScript, TypeScript</p>
+          <p className="About__text">Less, Emotion, Bootstrap, Tailwind</p>
+          <p className="About__text">React, Next, Gatsby, Angular</p>
+          <p className="About__text">Node, Express, Mongoose</p>
+          <h6 className="About__subtitle">Contact</h6>
+          <p className="About__text">
+            I currently work at{" "}
+            <a href={`https://sowingo.com/about/`}>
+              <b>Sowingo</b>
+            </a>
+            . Feel free to{" "}
+            <a href={`mailto:mmonis77@gmail.com`}>
+              <b>say hi</b>
+            </a>
+            .
+          </p>
+        </div>
+      </div>
+      <div className="About__link-container">
+        <Link className="About__link" to="/blog">
+          Blog
+        </Link>
       </div>
     </div>
   )
 }
-
-export default About

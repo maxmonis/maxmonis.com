@@ -1,0 +1,51 @@
+.Article {
+  &__main {
+    margin: 3rem auto 0;
+    max-width: 1200px;
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 3rem;
+  }
+
+  &__date {
+    margin-block: 1.25rem;
+  }
+
+  &__length {
+    margin-bottom: 5rem;
+  }
+
+  &__content {
+    text-align: left;
+    max-width: 100ch;
+  }
+
+  &__paragraph {
+    margin: 1rem 1.5rem 0;
+  }
+
+  &__link {
+    margin: 1rem;
+
+    &:hover {
+      border-bottom: 1px solid var(--blue);
+    }
+
+    &-container {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      padding-top: 5rem;
+      text-transform: uppercase;
+    }
+
+    &-section {
+      display: flex;
+      gap: 1rem;
+    }
+
+  }
+}

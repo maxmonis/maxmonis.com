@@ -1,9 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby"
 
-const useArticles = () => {
+export default function useArticles() {
   const data = useStaticQuery(graphql`
     query {
-      allDatoCmsArticle (sort: { fields: [published], order: DESC }) {
+      allDatoCmsArticle(sort: { fields: [published], order: DESC }) {
         nodes {
           title
           text
@@ -24,5 +24,3 @@ const useArticles = () => {
     return { title, image, text, blurb, slug, published }
   })
 }
-
-export default useArticles

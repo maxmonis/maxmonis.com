@@ -1,9 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby"
 
-const useWebsites = () => {
+export default function useWebsites() {
   const data = useStaticQuery(graphql`
     query {
-      allDatoCmsWebsite (sort: { fields: [index] }) {
+      allDatoCmsWebsite(sort: { fields: [index] }) {
         nodes {
           title
           text
@@ -24,5 +24,3 @@ const useWebsites = () => {
     return { title, image, text, url, github, index }
   })
 }
-
-export default useWebsites

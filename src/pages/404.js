@@ -1,24 +1,25 @@
+import "./styles/_404.scss"
 import React from "react"
 import { Link } from "gatsby"
-import { css } from "@emotion/core"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-const NotFoundPage = () => (
-  <Layout>
-    <SEO title="404: Not found" />
-    <div
-      css={css`
-        text-align: center;
-        h1 {
-          margin: 5rem auto 10rem;
-        }
-      `}
-    >
-      <h1>404: NOT FOUND</h1>
-      <Link to="/">Return home</Link>
-    </div>
-  </Layout>
-)
-
-export default NotFoundPage
+export default function FourOhFour() {
+  return (
+    <Layout>
+      <SEO title="404: Not found" />
+      <div className="FourOhFour">
+        <h2>404: NOT FOUND</h2>
+        <h5>
+          Oops, looks like you attempted to access a route that doesn't exist
+        </h5>
+        <p>
+          Please update the URL or{" "}
+          <Link to="/">
+            <b>return home</b>
+          </Link>
+        </p>
+      </div>
+    </Layout>
+  )
+}

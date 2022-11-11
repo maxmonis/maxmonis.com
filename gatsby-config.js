@@ -4,36 +4,37 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Max Monis`,
-    description: `Toronto web developer`,
-    author: `Max Monis <mmonis77@gmail.com>`,
+    title: "Max Monis",
+    description: "Toronto web developer",
+    author: "Max Monis <mmonis77@gmail.com>",
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    "gatsby-plugin-react-helmet",
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: `images`,
+        name: "images",
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-emotion`,
+    "gatsby-plugin-sass",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
+    "gatsby-plugin-emotion",
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: "gatsby-plugin-manifest",
       options: {
-        name: `max-monis`,
-        short_name: `monis`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/favicon.png`,
+        name: "max-monis",
+        short_name: "monis",
+        start_url: "/",
+        background_color: "#663399",
+        theme_color: "#663399",
+        display: "minimal-ui",
+        icon: "src/images/favicon.png",
       },
     },
     {
-      resolve: `gatsby-source-datocms`,
+      resolve: "gatsby-source-datocms",
       options: {
         apiToken: process.env.API_TOKEN,
       },

@@ -1,78 +1,48 @@
-import React from "react"
-import { css } from "@emotion/core"
+import "./styles/_footer.scss"
 import github from "../images/github.png"
 import linkedin from "../images/linkedin.png"
+import React from "react"
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer
-      css={css`
-        text-align: center;
-        margin-top: 5rem;
-        button {
-          outline: none;
-          border: none;
-          background-color: #ffffff;
-          color: var(--blue);
-          cursor: pointer;
-          margin-bottom: 3rem;
-          font-size: 1rem;
-          :hover {
-            border-bottom: 1px solid var(--blue);
-          }
-        }
-      `}
-    >
+    <footer className="Footer">
       <button
+        className="Footer__button"
         href="#top"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
         Scroll to top &#8593;
       </button>
-      <div
-        css={css`
-          display: flex;
-          flex: row;
-          width: 100%;
-          vertical-align: middle;
-          justify-content: center;
-          a {
-            padding: 1rem;
-          }
-        `}
-      >
+      <div className="Footer__link-container">
         <a
-          target="_blank"
+          className="Footer__link"
+          href="https://github.com/maxmonis"
           rel="noreferrer"
-          href="https://www.linkedin.com/in/max-monis-098ab1192"
+          target="_blank"
         >
           <img
-            css={css`
-              height: 25px;
-            `}
-            src={linkedin}
-            alt={"LinkedIn"}
+            className="Footer__link-image--large"
+            src={github}
+            alt="Github"
           />
         </a>
-        <a target="_blank" rel="noreferrer" href="https://github.com/maxmonis">
-          <img
-            css={css`
-              height: 25px;
-            `}
-            src={github}
-            alt={"Github"}
-          />
+        <a
+          className="Footer__link"
+          href="https://www.linkedin.com/in/max-monis-098ab1192"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <img className="Footer__link-image" src={linkedin} alt="LinkedIn" />
         </a>
       </div>
       <a
-        target="_blank"
-        rel="noreferrer"
+        className="Footer__link"
         href="https://github.com/maxmonis/personal"
+        rel="noreferrer"
+        target="_blank"
       >
-        © Max Monis {new Date().getFullYear()}
+        © Max Monis 2020-{new Date().getFullYear()}
       </a>
     </footer>
   )
 }
-
-export default Footer

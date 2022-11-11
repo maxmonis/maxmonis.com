@@ -1,0 +1,51 @@
+.About {
+  margin-top: 3rem;
+  padding-inline: 1rem;
+
+  &__subtitle {
+    margin-bottom: 1rem;
+
+    &:not(:first-child) {
+      margin-top: 1.5rem;
+    }
+  }
+
+  &__text {
+    margin: 0.25rem 0;
+  }
+
+  &__content {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem 0;
+    justify-content: center;
+    margin-block: 3rem 15rem;
+  }
+
+  &__image {
+    max-width: 300px;
+    width: 90%;
+    border: solid 3px var(--blue);
+    border-radius: 25px;
+  }
+
+  &__info {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    padding-inline: 1.5rem;
+  }
+
+  &__link {
+    &:hover {
+      border-bottom: 1px solid var(--blue);
+    }
+
+    &-container {
+      margin-top: 5rem;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.Blog {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  &__search-input {
+    margin: 1rem;
+    padding: 0.5rem;
+    width: 10rem;
+  }
+
+  &__preview-container {
+    max-width: 1200px;
+    padding: 2rem 1rem 0;
+
+    @media (min-width: 576px) {
+      display: flex;
+      flex: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__link {
+    &:hover {
+      border-bottom: 1px solid var(--blue);
+    }
+
+    &-container {
+      margin-top: 5rem;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+}

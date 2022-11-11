@@ -1,0 +1,34 @@
+.Preview {
+  border: 1px solid #e1e1e1;
+  margin-bottom: 2rem;
+  display: inline-block;
+  width: 100%;
+  max-width: 400px;
+  justify-content: center;
+  padding: 1rem;
+
+  &__title {
+    padding-bottom: 1rem;
+  }
+
+  &__text {
+    padding-top: 1rem;
+  }
+
+  @media (min-width: 576px) {
+    width: 250px;
+    margin: 10px;
+  }
+
+  &__image {
+
+    &,
+    &-container {
+      max-height: 275px;
+
+      @media (min-width: 576px) {
+        max-height: 150px;
+      }
+    }
+  }
+}
