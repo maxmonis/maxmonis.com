@@ -19,18 +19,23 @@ export default function About() {
           </p>
           <h6 className="About__subtitle">Technologies</h6>
           <p className="About__text">HTML, CSS, JavaScript, TypeScript</p>
-          <p className="About__text">Less, Emotion, Bootstrap, Tailwind</p>
           <p className="About__text">React, Next, Gatsby, Angular</p>
-          <p className="About__text">Node, Express, Mongoose</p>
+          <p className="About__text">Sass, Less, MUI, Tailwind</p>
+          <p className="About__text">Jest, Jasmine, Cypress</p>
           <h6 className="About__subtitle">Contact</h6>
           <p className="About__text">
             I currently work at{" "}
-            <a href={`https://sowingo.com/about/`}>
-              <b>Sowingo</b>
+            <a
+              className="About__text-link"
+              href={`https://sowingo.com/about`}
+              rel="noreferrer"
+              target="_blank"
+            >
+              Sowingo
             </a>
             . Feel free to{" "}
-            <a href={`mailto:mmonis77@gmail.com`}>
-              <b>say hi</b>
+            <a className="About__text-link" href="mailto:mmonis77@gmail.com">
+              say hi
             </a>
             .
           </p>

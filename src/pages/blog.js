@@ -22,7 +22,7 @@ export default function Blog() {
     } else {
       const regex = new RegExp(search, "gi")
       const matches = articles.filter(({ title, text }) =>
-        regex.test(title + text),
+        regex.test(`${text} ${title}`),
       )
       matches.length ? setFiltered(matches) : reset()
     }
@@ -33,6 +33,7 @@ export default function Blog() {
     <Layout>
       <SEO title="Blog" />
       <div className="Blog">
+        <h1 className="Blog__title">Blog</h1>
         <input
           className="Blog__search-input"
           onChange={e => setQuery(e.target.value)}

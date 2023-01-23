@@ -1,0 +1,44 @@
+$blue: #486486;
+$light-blue: lighten($blue, 55%);
+$light-grey: #e1e1e1;
+$white: #ffffff;
+
+$radius: 0.5rem;
+$radius-lg: 1rem;
+$radius-xl: 1.5rem;
+
+@function rem($px) {
+  $rem: calc($px / 16)+rem;
+  @return $rem;
+}
+
+$xs: 500px;
+$sm: 750px;
+$md: 1000px;
+$lg: 1250px;
+$xl: 1500px;
+
+@mixin hover-underline {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: rem(1);
+
+  &::after {
+    background: $blue;
+    bottom: 0;
+    content: '';
+    height: rem(1.5);
+    left: 0;
+    position: absolute;
+    transform: scale(0);
+    transform-origin: center;
+    transition: opacity 0.3s, transform 0.3s;
+    width: 100%;
+  }
+
+  &:hover::after,
+  &:focus::after {
+    transform: scale(1);
+  }
+}

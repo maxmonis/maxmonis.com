@@ -1,25 +1,29 @@
+@use "../../utils/style" as *;
+
 .Article {
   &__main {
-    margin: 3rem auto 0;
-    max-width: 1200px;
+    margin: 0 auto;
+    max-width: $lg;
     text-align: center;
   }
 
   &__title {
-    margin-bottom: 3rem;
+    margin-block: 2rem 4rem;
+  }
+
+  &__image {
+    &-container {
+      border: rem(1) solid $blue;
+    }
   }
 
   &__date {
-    margin-block: 1.25rem;
-  }
-
-  &__length {
-    margin-bottom: 5rem;
+    margin-block: 2rem;
   }
 
   &__content {
+    max-width: 80ch;
     text-align: left;
-    max-width: 100ch;
   }
 
   &__paragraph {
@@ -27,18 +31,17 @@
   }
 
   &__link {
-    margin: 1rem;
+    @include hover-underline();
 
-    &:hover {
-      border-bottom: 1px solid var(--blue);
-    }
+    margin: 1rem;
 
     &-container {
       align-items: center;
       display: flex;
       flex-direction: column;
       gap: 4rem;
-      padding-top: 5rem;
+      justify-content: center;
+      margin-top: 8rem;
       text-transform: uppercase;
     }
 
@@ -46,6 +49,5 @@
       display: flex;
       gap: 1rem;
     }
-
   }
 }

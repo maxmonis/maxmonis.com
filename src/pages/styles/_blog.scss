@@ -1,33 +1,37 @@
+@use "../../utils/style" as *;
+
 .Blog {
   align-items: center;
   display: flex;
   flex-direction: column;
 
+  &__title {
+    margin-top: 2rem;
+  }
+
   &__search-input {
-    margin: 1rem;
-    padding: 0.5rem;
-    width: 10rem;
+    border: rem(1) solid $light-grey;
+    border-radius: $radius;
+    font-size: 1rem;
+    outline-color: $blue;
+    margin: 2rem 1rem 1rem;
+    padding: 1rem;
+    min-width: 8rem;
   }
 
   &__preview-container {
-    max-width: 1200px;
-    padding: 2rem 1rem 0;
-
-    @media (min-width: 576px) {
-      display: flex;
-      flex: row;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: $lg;
+    padding: 2rem 1rem;
   }
 
   &__link {
-    &:hover {
-      border-bottom: 1px solid var(--blue);
-    }
+    @include hover-underline();
 
     &-container {
-      margin-top: 5rem;
+      margin-top: 4rem;
       text-align: center;
       text-transform: uppercase;
     }

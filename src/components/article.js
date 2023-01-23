@@ -25,34 +25,43 @@ export const query = graphql`
 
 export default function Article({
   data: {
-    allDatoCmsArticle: { nodes },
+    allDatoCmsArticle: {
+      nodes: [
+        {
+          image: { fluid },
+          published,
+          text,
+          title,
+        },
+      ],
+    },
   },
-  pageContext,
+  pageContext: { next, previous },
 }) {
-  const { next, previous } = pageContext
-  const { title, text, image, published } = nodes[0]
   const date = new Date(published).toLocaleDateString(undefined, {
     day: "numeric",
     month: "long",
     weekday: "long",
     year: "numeric",
   })
-  const numWords = text.split(" ").length
-  const minRead = Math.ceil(numWords / 1250) * 5
+
   return (
     <Layout>
       <SEO title={title} />
       <div className="Article">
         <main className="Article__main">
           <h1 className="Article__title">{title}</h1>
-          <Image fluid={image.fluid} />
-          <h5 className="Article__date">{date}</h5>
-          <h6 className="Article__length">{minRead} minute read</h6>
+          <div className="Article__image-container">
+            <Image fluid={fluid} />
+          </div>
+          <h6 className="Article__date">{date}</h6>
           <div className="Article__content">
             {text.split(/\r|\n/).map((paragraph, i) => (
-              <p className="Article__paragraph" key={i}>
-                {paragraph}
-              </p>
+              <p
+                className="Article__paragraph"
+                dangerouslySetInnerHTML={{ __html: paragraph }}
+                key={i}
+              ></p>
             ))}
           </div>
         </main>
@@ -60,12 +69,12 @@ export default function Article({
           <div className="Article__link-section">
             {previous && (
               <Link className="Article__link" to={`../${previous}`}>
-                &#9668; Previous
+                Back
               </Link>
             )}
             {next && (
               <Link className="Article__link" to={`../${next}`}>
-                Next &#9658;
+                Next
               </Link>
             )}
           </div>

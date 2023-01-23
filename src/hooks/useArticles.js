@@ -19,8 +19,18 @@ export default function useArticles() {
       }
     }
   `)
+
   return data.allDatoCmsArticle.nodes.map(article => {
-    const { title, image, text, blurb, slug, published } = article
-    return { title, image, text, blurb, slug, published }
+    const {
+      blurb,
+      image: { fluid },
+      published,
+      slug,
+      text,
+      title,
+    } = article
+    const numWords = text.split(" ").length
+    const minRead = Math.ceil(numWords / 1250) * 5
+    return { blurb, fluid, minRead, published, slug, text, title }
   })
 }

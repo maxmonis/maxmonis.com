@@ -2,7 +2,6 @@ import "./styles/_layout.scss"
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import { Global, css } from "@emotion/core"
 import Header from "./header"
 import Footer from "./footer"
 
@@ -19,23 +18,8 @@ export default function Layout({ children }) {
 
   return (
     <>
-      <Global
-        styles={css`
-          * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            color: var(--blue);
-            text-decoration: none;
-            list-style: none;
-          }
-          :root {
-            --blue: #486383;
-          }
-        `}
-      />
       <Header title={data.site.siteMetadata?.title || "Max Monis"} />
-      <main className="Layout__main">{children}</main>
+      <main className="Layout">{children}</main>
       <Footer />
     </>
   )

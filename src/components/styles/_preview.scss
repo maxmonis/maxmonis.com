@@ -1,34 +1,45 @@
+@use "../../utils/style" as *;
+
 .Preview {
-  border: 1px solid #e1e1e1;
-  margin-bottom: 2rem;
+  border: rem(1) solid $light-grey;
+  border-radius: $radius-lg;
   display: inline-block;
-  width: 100%;
-  max-width: 400px;
   justify-content: center;
-  padding: 1rem;
+  margin: 0.5rem 0.5rem 2rem;
+  padding: 1rem 1rem 1.5rem;
+  width: rem(250);
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+    justify-content: space-between;
+  }
 
   &__title {
-    padding-bottom: 1rem;
+    font-size: 1.5rem;
   }
 
   &__text {
-    padding-top: 1rem;
-  }
-
-  @media (min-width: 576px) {
-    width: 250px;
-    margin: 10px;
+    &-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
   }
 
   &__image {
+    border: rem(1) solid $blue;
 
     &,
     &-container {
-      max-height: 275px;
-
-      @media (min-width: 576px) {
-        max-height: 150px;
-      }
+      max-height: 10rem;
     }
   }
 }

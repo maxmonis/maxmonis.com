@@ -1,13 +1,19 @@
+@use "../../utils/style" as *;
+
 .Home {
+  width: 100%;
+
   &__content {
+    margin-inline: auto;
+    max-width: $lg;
     padding-inline: 1rem;
   }
 
   &__portfolio-title {
-    margin-block: 10rem 5rem;
+    margin-block: 8rem 4rem;
   }
 
   &__description {
-    margin: 5rem auto;
+    margin: 4rem auto;
   }
 }

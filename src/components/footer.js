@@ -37,7 +37,7 @@ export default function Footer() {
       </div>
       <a
         className="Footer__link"
-        href="https://github.com/maxmonis/personal"
+        href="https://github.com/maxmonis/maxmonis.com"
         rel="noreferrer"
         target="_blank"
       >

@@ -15,7 +15,7 @@ export default function Header({ title }) {
           Blog
         </Link>
         <a className="Header__link--outlined" href="mailto:mmonis77@gmail.com">
-          Get In Touch
+          Get in Touch
         </a>
       </div>
     </header>

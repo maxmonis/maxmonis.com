@@ -20,7 +20,6 @@ module.exports = {
     "gatsby-plugin-sass",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
-    "gatsby-plugin-emotion",
     {
       resolve: "gatsby-plugin-manifest",
       options: {

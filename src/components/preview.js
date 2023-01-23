@@ -5,20 +5,24 @@ import Image from "gatsby-image"
 import PropTypes from "prop-types"
 import React from "react"
 
-const Preview = ({ article }) => {
-  const { title, blurb, slug, image, published } = article
+export default function Preview({
+  article: { blurb, fluid, minRead, published, slug, title },
+}) {
   return (
     <div className="Preview">
       <Link to={`../blog/${slug}`}>
-        <h5 className="Preview__title">{title}</h5>
-        <div>
+        <div className="Preview__content">
+          <h5 className="Preview__title">{title}</h5>
           <div className="Preview__image-container">
-            <Image className="Preview__image" fluid={image.fluid} />
+            <Image className="Preview__image" fluid={fluid} />
           </div>
-          <p className="Preview__text">{blurb}</p>
-          <p className="Preview__text">
-            Published {formatDistanceToNow(new Date(published))} ago
-          </p>
+          <div className="Preview__text-container">
+            <p className="Preview__text">{blurb}</p>
+            <p className="Preview__text">{minRead} minute read</p>
+            <p className="Preview__text">
+              Published {formatDistanceToNow(new Date(published))} ago
+            </p>
+          </div>
         </div>
       </Link>
     </div>
@@ -28,5 +32,3 @@ const Preview = ({ article }) => {
 Preview.propTypes = {
   article: PropTypes.object.isRequired,
 }
-
-export default Preview

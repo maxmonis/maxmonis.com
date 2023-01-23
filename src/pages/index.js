@@ -16,11 +16,11 @@ export default function Home() {
         <Image />
         <div className="Home__content">
           <h1 className="Home__portfolio-title">Portfolio</h1>
+          {websites.map((website, i) => (
+            <Website key={website.url} website={website} i={i} />
+          ))}
+          <About />
         </div>
-        {websites.map((website, i) => (
-          <Website key={website.url} website={website} i={i} />
-        ))}
-        <About />
       </div>
     </Layout>
   )

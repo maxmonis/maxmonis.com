@@ -4,8 +4,6 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.35",
-    "@emotion/styled": "^10.0.27",
     "date-fns": "^2.16.1",
     "dotenv": "^8.2.0",
     "gatsby": "^2.24.63",
@@ -38,12 +36,12 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/maxmonis/personal"
+    "url": "https://github.com/maxmonis/maxmonis.com"
   },
   "scripts": {
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "serve": "gatsby serve",
     "start": "npm run develop",

@@ -1,3 +1,5 @@
+@use "../../utils/style" as *;
+
 .Image {
   &__background {
     width: 100%;
@@ -11,13 +13,13 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    justify-content: space-between;
     height: min(80vh, 100vw);
-    text-align: center;
+    justify-content: space-between;
     padding: clamp(2rem, 20%, 10vh) 15%;
+    text-align: center;
 
     * {
-      color: #fff;
+      color: $white;
     }
   }
 

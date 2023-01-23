@@ -1,12 +1,21 @@
+@use "../../utils/style" as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: $blue;
+  text-decoration: none;
+  list-style: none;
+}
+
 .Layout {
-  &__main {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 100vh;
-    text-align: center;
-  }
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100vh;
+  text-align: center;
 }
 
 h1 {

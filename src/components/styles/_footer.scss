@@ -1,26 +1,28 @@
+@use "../../utils/style" as *;
+
 .Footer {
+  margin-block: 25vh 0.5rem;
   text-align: center;
-  margin-top: 5rem;
 
   &__button {
-    outline: none;
+    background: $white;
     border: none;
-    background-color: #ffffff;
-    color: var(--blue);
+    color: $blue;
     cursor: pointer;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
+    outline: none;
+    transition: transform 0.2s;
 
     &:hover {
-      border-bottom: 1px solid var(--blue);
+      transform: translateY(rem(-4));
     }
   }
 
   &__link {
-    padding: 1rem;
+    margin: 1rem;
 
     &-container {
       display: flex;
-      flex: row;
       justify-content: center;
       vertical-align: middle;
       width: 100%;
@@ -31,7 +33,16 @@
 
       &--large {
         height: 2rem;
-        margin-top: -0.25rem;
+        margin-top: rem(-4);
+      }
+
+      &,
+      &--large {
+        transition: all 0.4s;
+
+        &:hover {
+          transform: scale(1.2);
+        }
       }
     }
   }

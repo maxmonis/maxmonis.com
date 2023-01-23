@@ -19,8 +19,15 @@ export default function useWebsites() {
       }
     }
   `)
+
   return data.allDatoCmsWebsite.nodes.map(website => {
-    const { title, image, text, url, github, index } = website
-    return { title, image, text, url, github, index }
+    const {
+      github,
+      image: { fluid },
+      text,
+      title,
+      url,
+    } = website
+    return { fluid, github, text, title, url }
   })
 }
