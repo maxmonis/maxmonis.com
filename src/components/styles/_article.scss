@@ -1,6 +1,9 @@
 @use "../../utils/style" as *;
 
 .Article {
+  max-width: $sm;
+  width: 100%;
+
   &__main {
     margin: 0 auto;
     max-width: $lg;
@@ -22,12 +25,16 @@
   }
 
   &__content {
-    max-width: 80ch;
+    padding-inline: 1.5rem;
     text-align: left;
   }
 
   &__paragraph {
-    margin: 1rem 1.5rem 0;
+    font-size: 1.25rem;
+    letter-spacing: rem(0.5);
+    line-height: 1.4;
+    margin: 1.5rem auto 0;
+    max-width: 60ch;
   }
 
   &__link {
