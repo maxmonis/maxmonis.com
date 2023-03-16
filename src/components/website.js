@@ -17,16 +17,18 @@ export default function Website({
         </a>
         <div className="Website__information">
           <p className="Website__description">{text}</p>
-          <div className="Website__link-container">
-            <a
-              className="Website__link"
-              href={github}
-              rel="noreferrer"
-              target="_blank"
-            >
-              View code on Github &#10132;
-            </a>
-          </div>
+          {github && (
+            <div className="Website__link-container">
+              <a
+                className="Website__link"
+                href={github}
+                rel="noreferrer"
+                target="_blank"
+              >
+                View code on Github &#10132;
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </div>
