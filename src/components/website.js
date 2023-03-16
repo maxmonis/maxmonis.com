@@ -16,7 +16,12 @@ export default function Website({
           </div>
         </a>
         <div className="Website__information">
-          <p className="Website__description">{text}</p>
+          <p
+            className="Website__description"
+            dangerouslySetInnerHTML={{
+              __html: text,
+            }}
+          />
           {github && (
             <div className="Website__link-container">
               <a
