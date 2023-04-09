@@ -23,7 +23,13 @@
   }
 
   &__title {
-    margin-block: 1rem;
+    max-width: fit-content;
+
+    &-container {
+      display: flex;
+      justify-content: center;
+      margin-block: 1rem;
+    }
   }
 
   &__image-container {

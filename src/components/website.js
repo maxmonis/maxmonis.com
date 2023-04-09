@@ -8,13 +8,15 @@ export default function Website({
 }) {
   return (
     <div className="Website">
-      <h3 className="Website__title">{title}</h3>
-      <div className="Website__content">
+      <div className="Website__title-container">
         <a target="_blank" rel="noreferrer" href={url}>
-          <div className="Website__image-container">
-            <Image fluid={fluid} />
-          </div>
+          <h3 className="Website__title">{title}</h3>
         </a>
+      </div>
+      <div className="Website__content">
+        <div className="Website__image-container">
+          <Image fluid={fluid} />
+        </div>
         <div className="Website__information">
           <p
             className="Website__description"
