@@ -7,19 +7,12 @@
   color: $blue;
   display: inline-block;
   justify-content: center;
-  margin-bottom: 25vh;
+  margin-bottom: 10rem;
 
   &__description {
+    font-size: clamp(1.125rem, 2.75vmin, 1.25rem);
     margin-block: 1rem 2rem;
     text-align: left;
-
-    a {
-      font-weight: 700;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
   }
 
   &__title {

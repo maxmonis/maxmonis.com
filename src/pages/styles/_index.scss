@@ -9,8 +9,17 @@
     padding-inline: 1.5rem;
   }
 
-  &__portfolio-title {
-    margin-block: 12rem 8rem;
+  &__portfolio {
+    &-title {
+      margin-top: 4rem;
+    }
+
+    &-intro {
+      font-size: clamp(1.125rem, 2.75vmin, 1.25rem);
+      margin: 2rem auto 10rem;
+      max-width: 70ch;
+      text-align: left;
+    }
   }
 
   &__description {

@@ -16,6 +16,21 @@ export default function Home() {
         <Image />
         <div className="Home__content">
           <h1 className="Home__portfolio-title">Portfolio</h1>
+          <p className="Home__portfolio-intro">
+            I build websites in my spare time for fun and to try out new tools
+            and techniques. Most of the repos on{" "}
+            <a
+              href="https://github.com/maxmonis"
+              rel="noreferrer"
+              target="_blank"
+            >
+              my github
+            </a>{" "}
+            are public, and you can{" "}
+            <a href="mailto:mmonis77@gmail.com">message me</a> if you'd like an
+            invite to view the private ones. The following five sites are
+            currently live:
+          </p>
           {websites.map((website, i) => (
             <Website key={website.url} website={website} i={i} />
           ))}
