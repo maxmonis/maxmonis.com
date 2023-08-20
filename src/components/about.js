@@ -20,8 +20,8 @@ export default function About() {
           <h6 className="About__subtitle">Technologies</h6>
           <p className="About__text">HTML, CSS, JavaScript, TypeScript</p>
           <p className="About__text">React, Next, Gatsby, Angular</p>
-          <p className="About__text">Sass, Less, MUI, Tailwind</p>
-          <p className="About__text">Jest, Jasmine, Cypress</p>
+          <p className="About__text">Sass, Less, Tailwind, MUI</p>
+          <p className="About__text">Jest, Jasmine, Cypress, Playwright</p>
           <h6 className="About__subtitle">Contact</h6>
           <p className="About__text">
             I currently work at{" "}

@@ -28,8 +28,8 @@ export default function Home() {
             </a>{" "}
             are public, and you can{" "}
             <a href="mailto:mmonis77@gmail.com">message me</a> if you'd like an
-            invite to view the private ones. The following five sites are
-            currently live:
+            invite to view the private ones. The following sites are currently
+            deployed:
           </p>
           {websites.map((website, i) => (
             <Website key={website.url} website={website} i={i} />
