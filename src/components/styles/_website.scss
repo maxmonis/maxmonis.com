@@ -6,12 +6,11 @@
   background: $white;
   color: $blue;
   display: inline-block;
-  justify-content: center;
-  margin-bottom: 10rem;
+  margin-block-end: 8rem;
 
   &__description {
     font-size: clamp(1.125rem, 2.75vmin, 1.25rem);
-    margin-block: 1rem 2rem;
+    margin-block-start: 1rem;
     text-align: left;
   }
 
@@ -30,14 +29,8 @@
   }
 
   &__link {
-    border: $border;
-    border-radius: $radius;
-    color: $blue;
-    max-width: rem(275);
-    padding: 1rem 2rem;
-
-    &:hover {
-      background: $light-blue;
+    &-container {
+      margin-block-start: 0.25rem;
     }
   }
 

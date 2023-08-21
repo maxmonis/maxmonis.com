@@ -25,7 +25,7 @@ export default function Website({
             }}
           />
           {github && (
-            <div className="Website__link-container">
+            <p className="Website__link-container">
               <a
                 className="Website__link"
                 href={github}
@@ -34,7 +34,7 @@ export default function Website({
               >
                 View code on Github &#10132;
               </a>
-            </div>
+            </p>
           )}
         </div>
       </div>
