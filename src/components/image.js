@@ -25,7 +25,7 @@ export default function Image() {
       >
         <div className="Image__content">
           <h2>My name is Max</h2>
-          <h3>I'm a frontend web developer</h3>
+          <h3>My world is software</h3>
         </div>
       </BackgroundImage>
       <p className="Image__copyright">
