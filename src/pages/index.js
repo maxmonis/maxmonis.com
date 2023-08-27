@@ -26,10 +26,7 @@ export default function Home() {
             >
               my github
             </a>{" "}
-            are public, and you can{" "}
-            <a href="mailto:mmonis77@gmail.com">message me</a> if you'd like an
-            invite to view the private ones. The following sites are currently
-            deployed:
+            are public, and the following sites are currently deployed:
           </p>
           {websites.map((website, i) => (
             <Website key={website.url} website={website} i={i} />
