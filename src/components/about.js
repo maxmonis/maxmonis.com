@@ -23,7 +23,7 @@ export default function About() {
           <p className="About__text">Sass, Less, Tailwind, MUI</p>
           <h6 className="About__subtitle">Contact</h6>
           <p className="About__text">
-            I currently work at{" "}
+            I'm currently a Senior Frontend Engineer at{" "}
             <a
               className="About__text-link"
               href={`https://sowingo.com/about`}
