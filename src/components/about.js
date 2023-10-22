@@ -1,7 +1,7 @@
 import "./styles/_about.scss"
 import { Link } from "gatsby"
 import React from "react"
-import photo from "../images/max.jpg"
+import photo from "../images/max.jpeg"
 
 export default function About() {
   return (
