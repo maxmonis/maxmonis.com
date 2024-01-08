@@ -10,6 +10,7 @@ export const query = graphql`
   query($slug: String!) {
     allDatoCmsArticle(filter: { slug: { eq: $slug } }) {
       nodes {
+        blurb
         title
         text
         published
@@ -28,6 +29,7 @@ export default function Article({
     allDatoCmsArticle: {
       nodes: [
         {
+          blurb,
           image: { fluid },
           published,
           text,
@@ -47,7 +49,7 @@ export default function Article({
 
   return (
     <Layout>
-      <SEO title={title} />
+      <SEO title={title} description={blurb} />
       <div className="Article">
         <main className="Article__main">
           <h1 className="Article__title">{title}</h1>

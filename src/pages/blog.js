@@ -31,7 +31,10 @@ export default function Blog() {
 
   return (
     <Layout>
-      <SEO title="Blog" />
+      <SEO
+        description="Posts about programming and other interests"
+        title="Blog"
+      />
       <div className="Blog">
         <h1 className="Blog__title">Blog</h1>
         <input
