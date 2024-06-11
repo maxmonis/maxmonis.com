@@ -1,0 +1,140 @@
+.hero-image {
+  align-items: center;
+  background-image:
+    linear-gradient(to top,
+      rgba(34, 49, 63, 0.6),
+      rgba(34, 49, 63, 0.6)),
+    url(./assets/mad-max.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fefefe;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 64px);
+  justify-content: space-between;
+  margin: -1.5rem 0 0 -1.5rem;
+  position: relative;
+  text-align: center;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  min-width: 100vw;
+  z-index: -1;
+}
+
+.hero-image h1 {
+  font-size: clamp(1.75rem, 10vw, 3.5rem);
+  margin-block-start: clamp(2rem, 20%, 10vh);
+}
+
+.hero-image h2 {
+  font-size: clamp(1.5rem, 8.5vmin, 3rem);
+  margin-block-end: clamp(2rem, 20%, 10vh);
+}
+
+.portfolio {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-title {
+  font-size: clamp(1.75rem, 10vw, 3.5rem);
+  margin-block: 5rem 2rem;
+}
+
+.portfolio-description {
+  max-width: 70ch;
+}
+
+.portfolio-description a {
+  text-decoration: underline;
+}
+
+.portfolio-sites {
+  display: flex;
+  flex-direction: column;
+  margin-block: 5rem 10rem;
+  max-width: 70ch;
+  gap: 10rem;
+  width: 100%;
+}
+
+.portfolio-site {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.portfolio-site h4 {
+  font-size: clamp(1.25rem, 7.5vmin, 3rem);
+}
+
+.portfolio-site-image {
+  border: 1px solid #222;
+  margin-block-start: 0.5rem;
+  width: 100%;
+}
+
+.portfolio-site-description {
+  margin-block: 1rem;
+}
+
+.portfolio-site-description a {
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.portfolio-site-link {
+  margin-inline: auto;
+  text-decoration: underline;
+}
+
+.about-me-title {
+  font-size: clamp(1.75rem, 10vw, 3.5rem);
+  margin-block-end: 2rem;
+  text-align: center;
+}
+
+.about-me-image {
+  border-radius: 1rem;
+  max-width: 15rem;
+}
+
+.about-me-image-caption {
+  margin-block-start: 0.5rem;
+}
+
+.about-me-content {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  text-align: center;
+}
+
+.about-me-info {
+  display: flex;
+  flex-direction: column;
+  max-width: 50ch;
+  gap: 0.5rem;
+}
+
+.about-me-subtitle {
+  font-size: 1.5rem;
+  margin-block-end: 0.25rem;
+  text-align: center;
+}
+
+.about-me-subtitle:not(:first-of-type) {
+  margin-block-start: 1rem;
+}
+
+.about-me-text a {
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .hero-image {
+    background-position: 20%;
+  }
+}

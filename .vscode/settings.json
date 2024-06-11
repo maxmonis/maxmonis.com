@@ -1,0 +1,15 @@
+{
+  "cSpell.words": [
+    "alcalandrea",
+    "goatvote",
+    "margaretmonis",
+    "MERN",
+    "Monis",
+    "Sowingo"
+  ],
+  "workbench.editor.customLabels.enabled": true,
+  "workbench.editor.customLabels.patterns": {
+    "**/index.css": "${dirname} styles",
+    "**/index.html": "${dirname} page"
+  }
+}
