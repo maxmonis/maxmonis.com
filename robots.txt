@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Disallow: /private/
+
+sitemap: https://maxmonis.com/sitemap.xml
