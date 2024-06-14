@@ -1,10 +1,29 @@
+@import "./reset.css";
+
+:root {
+  --bg-color: #fefefe;
+  --border: 1px solid var(--color);
+  --color: #222;
+  --header-height: 4rem;
+  --text-lg: clamp(1.25rem, 7.5vmin, 2.5rem);
+  --text-xl: clamp(1.5rem, 8.75vmin, 3rem);
+  --text-xxl: clamp(1.75rem, 10vw, 3.5rem);
+}
+
 html {
   font-family: "Poppins", sans-serif;
 }
 
+@media (min-width: 1500px) {
+  html {
+    font-size: 18px;
+  }
+}
+
 body {
-  background-color: #fefefe;
-  color: #222;
+  background: var(--bg-color);
+  color: var(--color);
+  overflow-x: hidden;
 }
 
 .page {
@@ -19,12 +38,12 @@ body {
 
 .page-header {
   align-items: center;
-  background: #fefefe;
+  background: var(--bg-color);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   display: flex;
+  height: var(--header-height);
   justify-content: space-between;
   left: 0;
-  padding-block: 0.5rem;
   position: fixed;
   top: 0;
   width: 100vw;
@@ -44,8 +63,12 @@ body {
   margin-inline-end: 1.5rem;
 }
 
+.page-nav a[aria-current="page"] {
+  text-decoration: underline;
+}
+
 .page-content {
-  margin-top: 64px;
+  margin-block-start: var(--header-height);
   padding: 1.5rem;
 }
 
@@ -60,8 +83,4 @@ body {
 
 .bmc-link {
   width: 8rem;
-}
-
-a[aria-current] {
-  text-decoration: underline;
 }
