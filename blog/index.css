@@ -1,3 +1,6 @@
+@import "../css/reset.css";
+@import "../css/styles.css";
+
 .blog-title {
   font-size: clamp(1.75rem, 10vw, 3.5rem);
   margin-block: 2rem;

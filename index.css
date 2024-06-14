@@ -1,3 +1,6 @@
+@import "./css/reset.css";
+@import "./css/styles.css";
+
 .hero-image {
   align-items: center;
   background-image:
