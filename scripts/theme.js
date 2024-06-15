@@ -1,20 +1,20 @@
-var darkModeToggle = document.createElement("button")
-darkModeToggle.id = "dark-mode-toggle"
-darkModeToggle.setAttribute("aria-label", "toggle dark mode")
-darkModeToggle.addEventListener("click", toggleTheme)
-document.querySelector(".page-footer").appendChild(darkModeToggle)
+var dark_mode_toggle = document.createElement("button")
+dark_mode_toggle.id = "dark-mode-toggle"
+dark_mode_toggle.setAttribute("aria-label", "toggle dark mode")
+dark_mode_toggle.addEventListener("click", toggleTheme)
+document.querySelector(".page-footer").appendChild(dark_mode_toggle)
 
 var theme = localStorage.getItem("maxmonis.com_theme")
-if (!theme) {
-  var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
-  theme = prefersDark ? "dark" : "light"
+if (theme !== "dark" && theme !== "light") {
+  var prefers_dark = window.matchMedia("(prefers-color-scheme: dark)").matches
+  theme = prefers_dark ? "dark" : "light"
 }
 setTheme(theme)
 
-function setTheme(newTheme) {
-  theme = newTheme
-  localStorage.setItem("maxmonis.com_theme", newTheme)
-  if (newTheme === "dark") {
+function setTheme(new_theme) {
+  theme = new_theme
+  localStorage.setItem("maxmonis.com_theme", new_theme)
+  if (new_theme === "dark") {
     document.body.classList.add("dark")
     document.querySelector("#dark-mode-toggle").innerText = "🌛"
   } else {
