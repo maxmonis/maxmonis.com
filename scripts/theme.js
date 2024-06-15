@@ -1,5 +1,6 @@
 var darkModeToggle = document.createElement("button")
 darkModeToggle.id = "dark-mode-toggle"
+darkModeToggle.setAttribute("aria-label", "toggle dark mode")
 darkModeToggle.addEventListener("click", toggleTheme)
 document.querySelector(".page-footer").appendChild(darkModeToggle)
 
