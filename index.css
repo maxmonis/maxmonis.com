@@ -10,7 +10,7 @@
   background-position: 30%;
   background-repeat: no-repeat;
   background-size: cover;
-  color: var(--bg-color);
+  color: var(--light-color);
   display: flex;
   flex-direction: column;
   height: calc(100vh - var(--header-height));
@@ -73,6 +73,7 @@
 }
 
 .portfolio-site-image {
+  box-shadow: var(--box-shadow);
   border: var(--border);
   margin-block-start: 0.5rem;
   width: 100%;

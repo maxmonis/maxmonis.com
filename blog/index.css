@@ -44,7 +44,6 @@
 }
 
 .blog-preview-image-container {
-  border: var(--border);
   height: 10.5rem;
 }
 
@@ -73,7 +72,6 @@
 
 .blog-post-image-container {
   aspect-ratio: 3/2;
-  border: var(--border);
   margin-inline: auto;
 }
 

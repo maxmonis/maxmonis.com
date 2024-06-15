@@ -20,6 +20,36 @@ a {
   text-decoration: inherit;
 }
 
+button {
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-size: 100%;
+  font-variation-settings: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  text-transform: none;
+}
+
+[role=button],
+button {
+  cursor: pointer
+}
+
+[type=button],
+[type=reset],
+[type=submit],
+button {
+  -webkit-appearance: button;
+  appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+
+
 b,
 strong {
   font-weight: 700;
