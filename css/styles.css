@@ -10,14 +10,7 @@
   --light-color: #fefefe;
   --text-lg: clamp(1.25rem, 7.5vmin, 2.5rem);
   --text-xl: clamp(1.5rem, 8.75vmin, 3rem);
-  --text-xxl: clamp(1.75rem, 10vw, 3.5rem);
-}
-
-:root body.dark {
-  --bg-color: var(--dark-color);
-  --border: 1px solid var(--light-color);
-  --box-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.5);
-  --color: var(--light-color);
+  --text-xxl: clamp(1.75rem, 10vmin, 3.5rem);
 }
 
 html {
@@ -34,6 +27,13 @@ body {
   background: var(--bg-color);
   color: var(--color);
   overflow-x: hidden;
+}
+
+body.dark {
+  --bg-color: var(--dark-color);
+  --border: 1px solid var(--light-color);
+  --box-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.5);
+  --color: var(--light-color);
 }
 
 .page {
