@@ -37,6 +37,15 @@ body.dark {
   --color: var(--light-color);
 }
 
+@media (prefers-color-scheme: dark) {
+  body.noscript {
+    --bg-color: var(--dark-color);
+    --border: 1px solid var(--light-color);
+    --box-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.5);
+    --color: var(--light-color);
+  }
+}
+
 .page {
   display: flex;
   flex-direction: column;
@@ -77,6 +86,12 @@ body.dark {
 
 body.dark .site-logo img {
   filter: invert(1);
+}
+
+@media (prefers-color-scheme: dark) {
+  body.noscript .site-logo img {
+    filter: invert(1);
+  }
 }
 
 .page-nav input,
