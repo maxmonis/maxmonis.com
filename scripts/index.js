@@ -55,3 +55,20 @@ function initListeners() {
 		}
 	});
 }
+
+autoScroll();
+
+function autoScroll() {
+	var portfolio = document.querySelector("#portfolio");
+	if (!portfolio) {
+		return;
+	}
+	var timeout = setTimeout(function () {
+		if (window.scrollY === 0) {
+			portfolio.scrollIntoView({ behavior: "smooth" });
+		}
+	}, 2000);
+	window.onscroll = function () {
+		clearTimeout(timeout);
+	};
+}
