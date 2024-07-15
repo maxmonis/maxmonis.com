@@ -32,11 +32,10 @@ function createToggle() {
 	document.querySelector(".page-footer").appendChild(toggle);
 }
 
-var checkbox = document.querySelector(".page-nav input");
-
 initListeners();
 
 function initListeners() {
+	var checkbox = document.querySelector(".page-nav input");
 	window.addEventListener("resize", function () {
 		if (window.innerWidth > 499) {
 			checkbox.checked = false;
@@ -48,15 +47,11 @@ function initListeners() {
 		}
 	});
 	document.addEventListener("keyup", function (event) {
-		switch (event.key) {
-			case "Escape": {
-				checkbox.checked = false;
-				break;
-			}
-			case "Tab": {
-				checkbox.checked = Boolean(document.querySelector(".page-nav a:focus"));
-				break;
-			}
+		if (event.key === "Escape") {
+			checkbox.checked = false;
+		}
+		if (event.key === "Tab") {
+			checkbox.checked = Boolean(document.querySelector(".page-nav a:focus"));
 		}
 	});
 }
