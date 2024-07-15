@@ -29,3 +29,48 @@ function createToggle() {
 	});
 	document.querySelector(".page-footer").appendChild(toggle);
 }
+
+var checkbox = document.querySelector(".page-nav input");
+var links = document.querySelectorAll(".page-nav a");
+
+initListeners();
+
+function initListeners() {
+	window.addEventListener("resize", function () {
+		if (window.innerWidth > 499) {
+			checkbox.checked = false;
+		}
+	});
+	document.addEventListener("click", function (event) {
+		if (!document.querySelector(".page-nav").contains(event.target)) {
+			checkbox.checked = false;
+		}
+	});
+	document.addEventListener("keyup", function (event) {
+		switch (event.key) {
+			case "Escape": {
+				checkbox.checked = false;
+				break;
+			}
+			case "Tab": {
+				if (checkbox.contains(event.target)) {
+					checkbox.checked = !checkbox.checked;
+					if (checkbox.checked) {
+						links[0].focus();
+					} else {
+						document.querySelector("a").focus();
+					}
+					break;
+				}
+				var focused = false;
+				for (var i = 0; i < links.length; i++) {
+					if (links[i].contains(event.target)) {
+						focused = true;
+					}
+				}
+				checkbox.checked = focused;
+				break;
+			}
+		}
+	});
+}
