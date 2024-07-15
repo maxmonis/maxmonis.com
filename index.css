@@ -51,6 +51,7 @@
 
 .portfolio-description a {
   text-decoration: underline;
+  white-space: nowrap;
 }
 
 .portfolio-site-list {
