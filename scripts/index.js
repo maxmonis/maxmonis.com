@@ -1,3 +1,5 @@
+document.body.classList.remove("noscript");
+
 var theme = localStorage.getItem("maxmonis.com_theme");
 if (theme !== "dark" && theme !== "light") {
 	theme = window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -31,7 +33,6 @@ function createToggle() {
 }
 
 var checkbox = document.querySelector(".page-nav input");
-var links = document.querySelectorAll(".page-nav a");
 
 initListeners();
 
@@ -53,22 +54,7 @@ function initListeners() {
 				break;
 			}
 			case "Tab": {
-				if (checkbox.contains(event.target)) {
-					checkbox.checked = !checkbox.checked;
-					if (checkbox.checked) {
-						links[0].focus();
-					} else {
-						document.querySelector("a").focus();
-					}
-					break;
-				}
-				var focused = false;
-				for (var i = 0; i < links.length; i++) {
-					if (links[i].contains(event.target)) {
-						focused = true;
-					}
-				}
-				checkbox.checked = focused;
+				checkbox.checked = Boolean(document.querySelector(".page-nav a:focus"));
 				break;
 			}
 		}

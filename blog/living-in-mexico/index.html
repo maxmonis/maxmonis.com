@@ -31,7 +31,7 @@
 		/>
 		<link href="../../site.webmanifest" rel="manifest" />
 	</head>
-	<body>
+	<body class="noscript">
 		<div class="page">
 			<div class="page-wrapper">
 				<header class="page-header">
@@ -43,7 +43,11 @@
 						Max Monis
 					</a>
 					<nav class="page-nav" role="navigation">
-						<input aria-label="toggle menu visibility" type="checkbox" />
+						<input
+							aria-label="toggle menu visibility"
+							tabindex="-1"
+							type="checkbox"
+						/>
 						<span></span>
 						<span></span>
 						<span></span>

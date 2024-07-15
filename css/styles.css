@@ -112,7 +112,8 @@ body.dark .site-logo img {
     display: block;
   }
 
-  .page-nav:has(input:checked) {
+  .page-nav:has(input:checked),
+  body.noscript .page-nav:has(a:focus):not(:has(input:checked)) {
     transform: translateX(1rem);
   }
 
@@ -152,17 +153,20 @@ body.dark .site-logo img {
     transform-origin: 0% 100%;
   }
 
-  .page-nav input:checked~span {
+  .page-nav input:checked~span,
+  body.noscript .page-nav:has(a:focus) input:not(:checked)~span {
     background: var(--bg-color);
     transform: rotate(45deg) translate(-2px, -1px);
   }
 
-  .page-nav input:checked~span:nth-last-child(3) {
+  .page-nav input:checked~span:nth-last-child(3),
+  body.noscript .page-nav:has(a:focus) input:not(:checked)~span:nth-last-child(3) {
     opacity: 0;
     transform: scale(0.2, 0.2);
   }
 
-  .page-nav input:checked~span:nth-last-child(2) {
+  .page-nav input:checked~span:nth-last-child(2),
+  body.noscript .page-nav:has(a:focus) input:not(:checked)~span:nth-last-child(2) {
     transform: rotate(-45deg) translate(0, -1px);
   }
 
@@ -183,7 +187,8 @@ body.dark .site-logo img {
     width: 6rem;
   }
 
-  .page-nav input:checked~ul {
+  .page-nav input:checked~ul,
+  body.noscript .page-nav:has(a:focus) input:not(:checked)~ul {
     transform: translate(-100%, 0);
   }
 }
