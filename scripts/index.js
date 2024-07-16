@@ -56,16 +56,16 @@ function initListeners() {
 	});
 }
 
-autoScroll();
+hideHero();
 
-function autoScroll() {
-	var portfolio = document.querySelector("#portfolio");
-	if (!portfolio) {
+function hideHero() {
+	var hero = document.querySelector(".hero-image");
+	if (!hero) {
 		return;
 	}
 	var timeout = setTimeout(function () {
 		if (window.scrollY === 0) {
-			portfolio.scrollIntoView({ behavior: "smooth" });
+			hero.classList.add("hide");
 		}
 	}, 2000);
 	window.onscroll = function () {
