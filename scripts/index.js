@@ -35,7 +35,7 @@ function createToggle() {
 initListeners();
 
 function initListeners() {
-	var checkbox = document.querySelector(".page-nav input");
+	var checkbox = document.querySelector("#menu-toggle");
 	window.addEventListener("resize", function () {
 		if (window.innerWidth > 499) {
 			checkbox.checked = false;
