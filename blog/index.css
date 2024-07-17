@@ -1,4 +1,4 @@
-@import "../css/styles.css";
+@import "../styles/global.css";
 
 .blog-title {
   font-size: var(--text-xxl);

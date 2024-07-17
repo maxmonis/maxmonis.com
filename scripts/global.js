@@ -1,11 +1,10 @@
 document.body.classList.remove("noscript");
 
 var theme = localStorage.getItem("maxmonis.com_theme");
-if (theme !== "dark" && theme !== "light") {
+if (theme !== "dark" && theme !== "light")
 	theme = window.matchMedia("(prefers-color-scheme: dark)").matches
 		? "dark"
 		: "light";
-}
 
 createToggle();
 applyTheme();
@@ -37,38 +36,15 @@ initListeners();
 function initListeners() {
 	var checkbox = document.querySelector("#menu-toggle");
 	window.addEventListener("resize", function () {
-		if (window.innerWidth > 499) {
-			checkbox.checked = false;
-		}
+		if (window.innerWidth > 499) checkbox.checked = false;
 	});
 	document.addEventListener("click", function (event) {
-		if (!document.querySelector(".page-nav").contains(event.target)) {
+		if (!document.querySelector(".page-nav").contains(event.target))
 			checkbox.checked = false;
-		}
 	});
 	document.addEventListener("keyup", function (event) {
-		if (event.key === "Escape") {
-			checkbox.checked = false;
-		}
-		if (event.key === "Tab") {
+		if (event.key === "Escape") checkbox.checked = false;
+		else if (event.key === "Tab")
 			checkbox.checked = Boolean(document.querySelector(".page-nav a:focus"));
-		}
 	});
-}
-
-hideHero();
-
-function hideHero() {
-	var hero = document.querySelector(".hero-image");
-	if (!hero) {
-		return;
-	}
-	var timeout = setTimeout(function () {
-		if (window.scrollY === 0) {
-			hero.classList.add("hide");
-		}
-	}, 2000);
-	window.onscroll = function () {
-		clearTimeout(timeout);
-	};
 }
