@@ -214,7 +214,7 @@ body.dark .site-logo img {
 
 .page-content {
   margin-block-start: var(--header-height);
-  padding: 1.5rem;
+  padding-inline: 1.5rem;
 }
 
 .page-footer {

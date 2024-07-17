@@ -2,7 +2,7 @@
 
 .blog-title {
   font-size: var(--text-xxl);
-  margin-block: 2rem;
+  margin-block: 6rem 2rem;
   text-align: center;
 }
 
@@ -48,7 +48,7 @@
 
 .blog-post-title {
   font-size: var(--text-lg);
-  margin: 2rem auto;
+  margin: 6rem auto 2rem;
   text-align: center;
 }
 
