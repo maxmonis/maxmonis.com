@@ -25,7 +25,7 @@ html {
 }
 
 body {
-  background: var(--bg-color);
+  background-color: var(--bg-color);
   color: var(--color);
   overflow-x: hidden;
 }
@@ -58,7 +58,7 @@ body.dark {
 
 .page-header {
   align-items: center;
-  background: var(--bg-color);
+  background-color: var(--bg-color);
   box-shadow: var(--box-shadow);
   display: flex;
   height: var(--header-height);
@@ -176,14 +176,14 @@ body.dark .page-nav a img {
   }
 
   .page-nav span {
-    background: var(--color);
+    background-color: var(--color);
     border-radius: 0.2rem;
     display: block;
     height: 0.25rem;
     margin-bottom: 5px;
     position: relative;
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+      background-color 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
       opacity 0.55s ease;
     transform-origin: 0.25rem 0px;
     width: 33px;
@@ -200,7 +200,7 @@ body.dark .page-nav a img {
 
   .page-nav input:checked~span,
   body.noscript .page-nav:has(a:focus) input:not(:checked)~span {
-    background: var(--bg-color);
+    background-color: var(--bg-color);
     transform: rotate(45deg) translate(-2px, -1px);
   }
 
@@ -216,7 +216,7 @@ body.dark .page-nav a img {
   }
 
   .page-nav ul {
-    background: var(--color);
+    background-color: var(--color);
     border-bottom-left-radius: 1rem;
     border-bottom: 1px solid var(--bg-color);
     border-left: 1px solid var(--bg-color);
@@ -259,7 +259,7 @@ body.dark .page-nav a img {
 }
 
 .bmc-link {
-  background: var(--light-color);
+  background-color: var(--light-color);
   border-radius: 0.5rem;
   padding: 0.25rem 0.75rem;
   width: 8rem;
