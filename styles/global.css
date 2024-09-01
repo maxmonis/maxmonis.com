@@ -108,7 +108,8 @@ body.dark .page-nav a img {
   padding-inline-end: 1.5rem;
 }
 
-.page-nav a[aria-current="page"] {
+.page-nav a[aria-current="page"],
+.page-nav a[aria-current="true"] {
   font-weight: 700;
 }
 
