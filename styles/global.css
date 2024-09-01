@@ -126,7 +126,7 @@ body.dark .page-nav a img {
   max-width: 1.5rem;
 }
 
-@media (max-width: 499px) {
+@media (max-width: 650px) {
   .page-nav {
     display: block;
     position: relative;
@@ -238,7 +238,7 @@ body.dark .page-nav a img {
   }
 }
 
-@media (max-width: 499px) and (prefers-color-scheme: dark) {
+@media (max-width: 650px) and (prefers-color-scheme: dark) {
   body.noscript .page-nav a img {
     filter: none;
   }
