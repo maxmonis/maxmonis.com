@@ -15,6 +15,20 @@ p {
   margin: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+p,
+figcaption {
+  text-wrap: pretty;
+}
+
 a {
   color: inherit;
   text-decoration: inherit;
