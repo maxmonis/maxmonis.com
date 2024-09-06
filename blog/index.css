@@ -91,6 +91,10 @@
   line-height: 1.75;
 }
 
+.blog-post-paragraph a {
+  text-decoration: underline;
+}
+
 .blog-post-footer {
   align-items: center;
   display: flex;
