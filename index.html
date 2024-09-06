@@ -393,6 +393,14 @@
 			</footer>
 		</div>
 		<script type="text/javascript" src="./scripts/global.js"></script>
-		<script type="text/javascript" src="./index.js"></script>
+		<script>
+			var timeout = setTimeout(function () {
+				if (window.scrollY === 0)
+					document.querySelector(".hero-image").classList.add("hide");
+			}, 2000);
+			window.onscroll = function () {
+				clearTimeout(timeout);
+			};
+		</script>
 	</body>
 </html>
