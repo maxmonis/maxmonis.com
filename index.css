@@ -149,10 +149,10 @@
 .previous-project-image {
   margin-block-end: 1rem;
   margin-inline: auto;
-  max-width: max(24rem, 67%);
+  max-width: 24rem;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 700px) {
   .previous-project {
     max-width: unset;
   }

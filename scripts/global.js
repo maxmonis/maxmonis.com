@@ -25,7 +25,7 @@ function applyTheme() {
 
 var checkbox = document.querySelector("#menu-toggle");
 window.addEventListener("resize", function () {
-	if (window.innerWidth > 650) checkbox.checked = false;
+	if (window.innerWidth > 699) checkbox.checked = false;
 });
 document.addEventListener("click", function (event) {
 	if (!document.querySelector(".page-nav").contains(event.target))
