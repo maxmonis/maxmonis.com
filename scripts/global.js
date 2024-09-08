@@ -6,45 +6,33 @@ if (theme !== "dark" && theme !== "light")
 		? "dark"
 		: "light";
 
-createToggle();
+var toggle = document.createElement("button");
+toggle.classList.add("dark-mode-toggle");
+toggle.setAttribute("aria-label", "toggle dark mode");
+toggle.addEventListener("click", function () {
+	theme = theme === "light" ? "dark" : "light";
+	localStorage.setItem("maxmonis.com_theme", theme);
+	applyTheme();
+});
+document.querySelector(".page-footer").appendChild(toggle);
+
 applyTheme();
 
 function applyTheme() {
-	if (theme === "dark") {
-		document.body.classList.add("dark");
-		document.querySelector(".dark-mode-toggle").innerText = "🌛";
-	} else {
-		document.body.classList.remove("dark");
-		document.querySelector(".dark-mode-toggle").innerText = "🌞";
-	}
+	document.body.classList.toggle("dark", theme === "dark");
+	toggle.innerText = theme === "dark" ? "🌛" : "🌞";
 }
 
-function createToggle() {
-	var toggle = document.createElement("button");
-	toggle.classList.add("dark-mode-toggle");
-	toggle.setAttribute("aria-label", "toggle dark mode");
-	toggle.addEventListener("click", function () {
-		theme = theme === "light" ? "dark" : "light";
-		localStorage.setItem("maxmonis.com_theme", theme);
-		applyTheme();
-	});
-	document.querySelector(".page-footer").appendChild(toggle);
-}
-
-initListeners();
-
-function initListeners() {
-	var checkbox = document.querySelector("#menu-toggle");
-	window.addEventListener("resize", function () {
-		if (window.innerWidth > 650) checkbox.checked = false;
-	});
-	document.addEventListener("click", function (event) {
-		if (!document.querySelector(".page-nav").contains(event.target))
-			checkbox.checked = false;
-	});
-	document.addEventListener("keyup", function (event) {
-		if (event.key === "Escape") checkbox.checked = false;
-		else if (event.key === "Tab")
-			checkbox.checked = Boolean(document.querySelector(".page-nav a:focus"));
-	});
-}
+var checkbox = document.querySelector("#menu-toggle");
+window.addEventListener("resize", function () {
+	if (window.innerWidth > 650) checkbox.checked = false;
+});
+document.addEventListener("click", function (event) {
+	if (!document.querySelector(".page-nav").contains(event.target))
+		checkbox.checked = false;
+});
+document.addEventListener("keyup", function (event) {
+	if (event.key === "Escape") checkbox.checked = false;
+	else if (event.key === "Tab")
+		checkbox.checked = document.querySelector(".page-nav a:focus") !== null;
+});
