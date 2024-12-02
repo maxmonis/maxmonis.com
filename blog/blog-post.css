@@ -40,6 +40,12 @@
   text-decoration: underline;
 }
 
+.blog-post-snippet {
+  margin-inline: auto;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 .blog-post-footer {
   align-items: center;
   display: flex;
