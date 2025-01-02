@@ -74,9 +74,9 @@
 .portfolio-site-list {
   display: flex;
   flex-direction: column;
-  margin-block: 5rem 10rem;
+  margin-block: 5rem;
   max-width: 70ch;
-  gap: 10rem;
+  gap: 5rem;
   width: 100%;
 }
 
@@ -115,7 +115,7 @@
 .previous-projects {
   display: flex;
   flex-direction: column;
-  margin-block-end: 10rem;
+  margin-block-end: 5rem;
   max-width: 70ch;
   width: 100%;
 }
@@ -143,13 +143,13 @@
 
 .previous-project {
   margin-inline: auto;
-  max-width: 24rem;
+  max-width: 28rem;
 }
 
 .previous-project-image {
   margin-block-end: 1rem;
   margin-inline: auto;
-  max-width: 24rem;
+  max-width: 28rem;
 }
 
 @media (min-width: 700px) {
