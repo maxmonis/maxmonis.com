@@ -13,7 +13,7 @@
 
 .blog-post-date {
   font-size: 1.125rem;
-  margin-block: 2.5rem 2rem;
+  margin-block: 2rem;
   text-align: center;
 }
 
@@ -38,6 +38,12 @@
 
 .blog-post-paragraph a {
   text-decoration: underline;
+}
+
+.blog-post-snippet {
+  margin-inline: auto;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .blog-post-footer {

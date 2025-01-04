@@ -91,6 +91,7 @@ video {
   max-width: 100%
 }
 
-figure {
+figure,
+pre {
   margin: 0;
 }

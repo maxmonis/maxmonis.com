@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="Embedding React components in HTML" name="description" />
+		<title>React HTML Elements | Max Monis</title>
+		<link href="https://fonts.googleapis.com" rel="preconnect" />
+		<link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link href="../blog-post.css" rel="stylesheet" />
+		<link
+			href="../../assets/favicon/apple-touch-icon.png"
+			media="(prefers-color-scheme: light)"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		<link
+			href="../../assets/favicon/favicon-32x32.png"
+			media="(prefers-color-scheme: light)"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		<link
+			href="../../assets/favicon/favicon-16x16.png"
+			media="(prefers-color-scheme: light)"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		<link
+			href="../../assets/favicon/dark-apple-touch-icon.png"
+			media="(prefers-color-scheme: dark)"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		<link
+			href="../../assets/favicon/dark-favicon-32x32.png"
+			media="(prefers-color-scheme: dark)"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		<link
+			href="../../assets/favicon/dark-favicon-16x16.png"
+			media="(prefers-color-scheme: dark)"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		<link href="../../site.webmanifest" rel="manifest" />
+	</head>
+	<body class="noscript">
+		<div class="page">
+			<div class="page-wrapper">
+				<header class="page-header">
+					<a aria-label="homepage" class="site-logo" href="../../">
+						<img
+							alt="logo of Max Monis's personal website, featuring stylized initials 'MM' in black and white"
+							src="../../assets/favicon/apple-touch-icon.png"
+						/>
+						Max Monis
+					</a>
+					<nav class="page-nav" role="navigation">
+						<input
+							aria-label="toggle menu visibility"
+							id="menu-toggle"
+							tabindex="-1"
+							type="checkbox"
+						/>
+						<span></span>
+						<span></span>
+						<span></span>
+						<ul>
+							<li><a href="../../">Portfolio</a></li>
+							<li><a aria-current="true" href="../">Blog</a></li>
+							<li><a href="../../resume.pdf" target="_blank">Resume</a></li>
+							<li>
+								<a
+									aria-label="github profile"
+									href="https://github.com/maxmonis"
+									rel="noreferrer"
+									target="_blank"
+									><img alt="Github logo" src="../../assets/logos/github.svg"
+								/></a>
+							</li>
+							<li>
+								<a
+									aria-label="linkedin profile"
+									href="https://www.linkedin.com/in/maxmonis/"
+									rel="noreferrer"
+									target="_blank"
+									><img
+										alt="Linkedin logo"
+										src="../../assets/logos/linkedin.svg"
+								/></a>
+							</li>
+							<li>
+								<a
+									aria-label="compose an email"
+									href="mailto:themaxmonis@gmail.com"
+								>
+									<img alt="Gmail logo" src="../../assets/logos/gmail.svg"
+								/></a>
+							</li>
+						</ul>
+					</nav>
+				</header>
+				<main class="page-content blog-post">
+					<h1 class="blog-post-title">React HTML Elements</h1>
+					<h2 class="blog-post-date">Saturday, January 4, 2025</h2>
+					<div class="blog-post-content">
+						<p class="blog-post-paragraph">
+							I created an
+							<a
+								href="https://github.com/maxmonis/react-html-elements"
+								target="_blank"
+								>example repo</a
+							>
+							for this article.
+						</p>
+						<p class="blog-post-paragraph">
+							React has become the de facto standard for web development, but
+							there are still a ton of legacy codebases out there which use
+							outdated frameworks like AngularJS. Moreover, there are many types
+							of functionality which can most easily be implemented using React
+							and its large ecosystem of libraries. As such, there are many use
+							cases for embedding React components into legacy codebases. Let's
+							look at how this can be achieved.
+						</p>
+						<p class="blog-post-paragraph">
+							The first thing we'll do is create a new React app at the root of
+							the existing repo. I'll call it "react-app", but you can of course
+							name it whatever you like. You can also replace "react-ts" with
+							"react" if you don't want to use TypeScript (although I strongly
+							recommend using it and my examples all will). As of the time of
+							writing, the script for a Vite Typescript React app is:
+						</p>
+						<pre class="blog-post-snippet">
+npm create vite@latest react-app -- --template react-ts
+            </pre>
+						<p class="blog-post-paragraph">
+							I'm using version 6.0.5 of Vite for this demo. There may be a
+							newer version available by the time you're reading this so some
+							syntax may be different, but almost none of what we're doing
+							relates directly to Vite.
+						</p>
+						<p class="blog-post-paragraph">
+							Now that we've got our new app, cd into it and install the
+							dependencies. We're ready to get started on the logic which will
+							allow interoperability between the legacy codebase and our new
+							React app. The main transformer is as follows:
+						</p>
+						<pre class="blog-post-snippet">
+// react-app/src/interop/ReactElement.ts
+
+import { createRoot } from "react-dom/client"
+
+export class ReactElement extends HTMLElement {
+  private mutationObserver: MutationObserver
+
+  constructor(
+    private createElement: (props: Record<&zwj;string, unknown>) => JSX.Element
+  ) {
+    super()
+
+    // Re-render the component if the element's attributes change
+    this.mutationObserver = new MutationObserver(() => {
+      this.unmount()
+      this.render()
+    })
+    this.mutationObserver.observe(this, { attributes: true })
+  }
+
+  // Native HTMLElement lifecycle method which runs on init
+  connectedCallback() {
+    this.render()
+  }
+
+  // Native HTMLElement lifecycle method which runs on destroy
+  disconnectedCallback() {
+    this.unmount()
+    this.mutationObserver.disconnect()
+  }
+
+  private unmount() {
+    createRoot(this).unmount()
+  }
+
+  private render() {
+    createRoot(this).render(this.createElement(this.getProps()))
+  }
+
+  // Converts stringified kebab-case HTML attributes to parsed camelCase props
+  private getProps() {
+    return [...this.attributes].reduce<&zwj;Record<&zwj;string, unknown>>(
+      (props, { name, value }) => {
+        props[ReactElement.kebabToCamel(name)] = ReactElement.parseValue(value)
+        return props
+      },
+      {}
+    )
+  }
+
+  private static kebabToCamel(name: string) {
+    return name
+      .split("-")
+      .map((word, i) => (i ? this.capitalize(word) : word))
+      .join("")
+  }
+
+  private static parseValue(value: string): unknown {
+    try {
+      return JSON.parse(value)
+    } catch {
+      return value
+    }
+  }
+
+  private static capitalize(word: string) {
+    return word[0].toUpperCase() + word.slice(1)
+  }
+}
+            </pre>
+						<p class="blog-post-paragraph">
+							The gist of this class is that it creates a custom HTML element
+							which is a React component under the hood. We're leveraging native
+							<code>HTMLElement</code>
+							lifecycle methods to mount the element and re-render if there are
+							changes in its attributes. The attributes are converted from
+							stringified values with kebab-case keys to parsed values with
+							camelCase keys, which are passed as props to the React component
+							from the createElement method which the class receives on
+							initialization. ReactDOM then renders the element.
+						</p>
+						<p class="blog-post-paragraph">
+							Don't worry if you don't fully understand it yet, we still have a
+							few steps to go. Also, this logic is meant to be set and forget so
+							it's unlikely you'll ever need to make many modifications. Okay,
+							now we need to add a method to define custom HTML elements using
+							our new class:
+						</p>
+						<pre class="blog-post-snippet">
+// react-app/src/interop/defineElements.ts
+
+import { createElement } from "react"
+import { ReactElement } from "./ReactElement"
+
+// Add components here to expose them to the legacy app,
+// ensuring each includes a unique kebab-case tag
+const elements: Array<&zwj;React.ElementType & { tag: string }> = []
+
+export function defineElements() {
+  for (const element of elements)
+    customElements.define(
+      element.tag,
+      class extends ReactElement {
+        constructor() {
+          super(props => createElement(element, props))
+        }
+      }
+    )
+}
+            </pre>
+						<p class="blog-post-paragraph">
+							As per the comment, any component which you want to expose as a
+							custom HTML element must be added to the
+							<code>elements</code> array. The
+							<code>defineElements</code> function iterates over the array and
+							defines each custom element, using its tag property as the custom
+							element tag (hence the need to ensure it's unique and kebab-case).
+							And now we just need to make a quick update to our main TS file:
+						</p>
+						<pre class="blog-post-snippet">
+// react-app/src/main.tsx
+
+import { StrictMode } from "react"
+import { createRoot } from "react-dom/client"
+import { defineElements } from "./interop/defineElements"
+
+// Create custom HTML elements during build
+if (import.meta.env.PROD) defineElements()
+// Otherwise render the WIP component in dev mode
+else
+  createRoot(document.getElementById("root")!).render(
+    <&zwj;StrictMode>
+      <&zwj;div>
+        Replace this div with the component you're currently working on. This
+        will enable you to take advantage of hot reloading. Do not commit
+        changes to this file. When you're ready to try your component within the
+        legacy app, add it to the elements array in `interop/defineElements.ts`.
+      <&zwj;/div>
+    <&zwj;/StrictMode>
+  )
+            </pre>
+						<p class="blog-post-paragraph">
+							Once again, the code comments sum up this logic fairly well. If
+							we're in the production Node environment it means that the React
+							app is being built, indicating that the legacy app is starting up
+							either in development or production (since either way the React
+							app needs to be built and expose the custom HTML attributes the
+							legacy app will include). Otherwise, we're starting up the React
+							app independently for development, in which case we can add our
+							WIP component and render it in strict mode with hot reloading.
+						</p>
+						<p class="blog-post-paragraph">
+							To see this all in action, let's imagine we're creating a
+							dashboard (its exact contents are not relevant to this article).
+							Basically it just needs to be a component with a tab property
+							which is a kebab-case string. For example:
+						</p>
+						<pre class="blog-post-snippet">
+// react-app/src/components/DashboardApp.tsx
+
+export function DashboardApp() {
+  // load data, manage state, return JSX
+}
+
+DashboardApp.tag = "dashboard-app"
+            </pre>
+						<p class="blog-post-paragraph">
+							During development, we can add it to our
+							<code>main.tsx</code> file (replacing the div from above with the
+							WIP component):
+						</p>
+						<pre class="blog-post-snippet">
+createRoot(document.getElementById("root")!).render(
+  <&zwj;StrictMode>
+    <&zwj;DashboardApp />
+  <&zwj;/StrictMode>
+)
+						</pre
+						>
+						<p class="blog-post-paragraph">
+							This is for development purposes only and will not be committed.
+							Once we're happy with our new component we can add it to the
+							<code>elements</code> array in
+							<code>interop/defineElements.ts</code>. This will allow the legacy
+							app to import it and use it as a custom HTML element.
+						</p>
+						<pre class="blog-post-snippet">
+const elements: Array<&zwj;React.ElementType & { tag: string }> = [DashboardApp]
+						</pre
+						>
+						<p class="blog-post-paragraph">
+							Excellent, we're done with most of the React logic. We just need
+							to make a small update to our vite.config.ts to prevent our build
+							from including hashed file names:
+						</p>
+						<pre class="blog-post-snippet">
+// react-app/vite.config.ts
+
+import { defineConfig } from "vite"
+import react from "@vitejs/plugin-react"
+
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        // By default these file names will be hashed but we
+        // need them unhashed so the legacy app can import
+        // them using script/link tags in its root index.html
+        assetFileNames: "assets/[name].[ext]",
+        chunkFileNames: "assets/[name].js",
+        entryFileNames: "assets/[name].js"
+      }
+    }
+  },
+  plugins: [react()]
+})
+            </pre>
+						<p class="blog-post-paragraph">
+							From here it really depends on what stack your legacy app uses,
+							but in a nutshell we need to update its scripts so that prior to
+							starting the development server or building the app for
+							deployment, the React app is built. We also need to point the
+							legacy app to the compiled JavaScript and CSS files from the
+							<code>dist</code> directory.
+						</p>
+						<p class="blog-post-paragraph">
+							I put this example together by cloning a sample AngularJS app and
+							incorporating React into it. Here's the new script I added to its
+							<code>package.json</code>:
+						</p>
+						<pre class="blog-post-snippet">
+cd react-app && npm run build && cd .. && cpx \"react-app/dist/**/*\" app/lib/react-app -C
+						</pre
+						>
+						<p class="blog-post-paragraph">
+							Again, this runs before both the development and build scripts. It
+							compiles the React code and then copies it into the (gitignored)
+							<code>lib</code> directory, from which it can be accessed by the
+							legacy app. In order to access it I added this to the
+							<code>head</code> of the legacy app's root
+							<code>index.html</code>:
+						</p>
+						<pre class="blog-post-snippet">
+<&zwj;link href="lib/react-app/assets/index.css" rel="stylesheet" />
+<&zwj;script src="lib/react-app/assets/index.js"><&zwj;/script>
+						</pre
+						>
+						<p class="blog-post-paragraph">
+							And now we can embed our custom HTML element anywhere in the
+							legacy app:
+						</p>
+						<pre class="blog-post-snippet">
+<&zwj;dashboard-app><&zwj;/dashboard-app>
+						</pre
+						>
+						<p class="blog-post-paragraph">
+							My inspiration for creating this blog post was to help other
+							developers accomplish what I did in 2021 when I was tasked with
+							integrating React into a legacy AngularJS app. I'll wrap up with a
+							few tips based on my own experience.
+						</p>
+						<p class="blog-post-paragraph">
+							Be aware that your legacy app may re-render multiple times, so if
+							you're fetching data in a React component this may cause
+							duplicated calls to occur. If you have some way of making your
+							HTTP requests idempotent, great. If not, you may need to update
+							<code>ReactElement</code> so that it doesn't render until all
+							props are available.
+						</p>
+						<p class="blog-post-paragraph">
+							Global styles from your legacy application will apply to your
+							React app (and vice versa), although you can use a scoped approach
+							like CSS Modules to avoid this. As with any app, you have the
+							option of using a preprocessor like Sass or a library like MUI or
+							Tailwind. It's also possible to attach a shadow DOM.
+						</p>
+						<p class="blog-post-paragraph">
+							Finally, <code>@tanstack/react-query</code> can be really helpful,
+							and make sure that you export a single instance of
+							<code>QueryClient</code> so that all of your components will have
+							access to the same context.
+						</p>
+						<p class="blog-post-paragraph">
+							Technical debt is an inevitable part of the software development
+							process, and developers have no control over if and when a core
+							dependency of theirs is deprecated. Fortunately, we can use the
+							approach laid out above to incorporate modern technologies into
+							legacy applications while avoiding a costly and risky full-scale
+							rewrite. Thanks for reading!
+						</p>
+					</div>
+				</main>
+			</div>
+			<footer class="page-footer">
+				<p>Made with ☕️ by Max Monis</p>
+				<a
+					aria-label="Max Monis's page on Buy Me a Coffee"
+					class="bmc-link"
+					href="https://buymeacoffee.com/maxmonis"
+					rel="noreferrer"
+					target="_blank"
+					><img alt="Buy Me a Coffee logo" src="../../assets/logos/bmc.svg" />
+				</a>
+			</footer>
+		</div>
+		<script type="text/javascript" src="../../scripts/global.js"></script>
+	</body>
+</html>

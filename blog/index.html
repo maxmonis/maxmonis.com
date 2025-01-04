@@ -119,192 +119,222 @@
 				</header>
 				<main class="page-content">
 					<h1 class="blog-title">Blog</h1>
-					<ul class="blog-preview-list">
-						<li class="blog-preview">
-							<a
-								aria-label="Breaking into Tech blog post"
-								class="blog-preview-link"
-								href="./breaking-into-tech"
-							>
-								<h2 class="blog-preview-title">Breaking into Tech</h2>
-								<img
-									alt="a programmer working at a desk"
-									class="blog-preview-image"
-									height="192"
-									src="../assets/blog/breaking-into-tech.jpg"
-									width="288"
-								/>
-								<div class="blog-preview-text">
-									<h2 aria-hidden="true" class="blog-preview-title">
-										Breaking into Tech
-									</h2>
-									<p>Looking back on my first 2+ years at a startup</p>
-									<small>February 18, 2023</small>
-								</div>
-							</a>
-						</li>
-						<li class="blog-preview">
-							<a
-								aria-label="Honouring Heroes blog post"
-								class="blog-preview-link"
-								href="./honouring-heroes"
-							>
-								<h2 class="blog-preview-title">Honouring Heroes</h2>
-								<img
-									alt="a field of poppies"
-									class="blog-preview-image"
-									height="192"
-									src="../assets/blog/honouring-heroes.png"
-									width="288"
-								/>
-								<div class="blog-preview-text">
-									<h2 aria-hidden="true" class="blog-preview-title">
-										Honouring Heroes
-									</h2>
-									<p>Stories from the Second World War</p>
-									<small>November 14, 2020</small>
-								</div>
-							</a>
-						</li>
-						<li class="blog-preview">
-							<a
-								aria-label="Staying Positive blog post"
-								class="blog-preview-link"
-								href="./staying-positive"
-							>
-								<h2 class="blog-preview-title">Staying Positive</h2>
-								<img
-									alt="the slogan 'keep calm and carry on' on a red background"
-									class="blog-preview-image"
-									height="192"
-									src="../assets/blog/staying-positive.png"
-									width="288"
-								/>
-								<div class="blog-preview-text">
-									<h2 aria-hidden="true" class="blog-preview-title">
-										Staying Positive
-									</h2>
-									<p>My approach to coping with hardship</p>
-									<small>November 7, 2020</small>
-								</div>
-							</a>
-						</li>
-						<li class="blog-preview">
-							<a
-								aria-label="Living in Mexico blog post"
-								class="blog-preview-link"
-								href="./living-in-mexico"
-							>
-								<h2 class="blog-preview-title">Living in Mexico</h2>
-								<img
-									alt="Mexican flag"
-									class="blog-preview-image"
-									height="192"
-									src="../assets/blog/living-in-mexico.jpg"
-									width="288"
-								/>
-								<div class="blog-preview-text">
-									<h2 aria-hidden="true" class="blog-preview-title">
-										Living in Mexico
-									</h2>
-									<p>Memories from my time in Mexico</p>
-									<small>October 31, 2020</small>
-								</div>
-							</a>
-						</li>
-						<li class="blog-preview">
-							<a
-								aria-label="Becoming Bilingual blog post"
-								class="blog-preview-link"
-								href="./becoming-bilingual"
-							>
-								<h2 class="blog-preview-title">Becoming Bilingual</h2>
-								<img
-									alt="Spanish flag"
-									class="blog-preview-image"
-									height="192"
-									src="../assets/blog/becoming-bilingual.png"
-									width="288"
-								/>
-								<div class="blog-preview-text">
-									<h2 aria-hidden="true" class="blog-preview-title">
-										Becoming Bilingual
-									</h2>
-									<p>Exploring the process I used to learn Spanish</p>
-									<small>October 24, 2020</small>
-								</div>
-							</a>
-						</li>
-						<li class="blog-preview">
-							<a
-								aria-label="Running a Marathon blog post"
-								class="blog-preview-link"
-								href="./running-a-marathon"
-							>
-								<h2 class="blog-preview-title">Running a Marathon</h2>
-								<img
-									alt="a group of people running a marathon"
-									class="blog-preview-image"
-									height="192"
-									src="../assets/blog/running-a-marathon.jpg"
-									width="288"
-								/>
-								<div class="blog-preview-text">
-									<h2 aria-hidden="true" class="blog-preview-title">
-										Running a Marathon
-									</h2>
-									<p>Reflecting on the time I ran 42.2 kilometres</p>
-									<small>October 17, 2020</small>
-								</div>
-							</a>
-						</li>
-						<li class="blog-preview">
-							<a
-								aria-label="Getting in Shape blog post"
-								class="blog-preview-link"
-								href="./getting-in-shape"
-							>
-								<h2 class="blog-preview-title">Getting in Shape</h2>
-								<img
-									alt="a barbell on the floor of a gym"
-									class="blog-preview-image"
-									height="192"
-									src="../assets/blog/getting-in-shape.jpg"
-									width="288"
-								/>
-								<div class="blog-preview-text">
-									<h2 aria-hidden="true" class="blog-preview-title">
-										Getting in Shape
-									</h2>
-									<p>My journey from overweight to fitness enthusiast</p>
-									<small>October 10, 2020</small>
-								</div>
-							</a>
-						</li>
-						<li class="blog-preview">
-							<a
-								aria-label="Learning to Code blog post"
-								class="blog-preview-link"
-								href="./learning-to-code"
-							>
-								<h2 class="blog-preview-title">Learning to Code</h2>
-								<img
-									alt="a screen with computer code"
-									class="blog-preview-image"
-									height="192"
-									src="../assets/blog/learning-to-code.png"
-									width="288"
-								/>
-								<div class="blog-preview-text">
-									<h2 aria-hidden="true" class="blog-preview-title">
-										Learning to Code
-									</h2>
-									<p>Detailing my transition into the tech industry</p>
-									<small>October 3, 2020</small>
-								</div>
-							</a>
-						</li>
-					</ul>
+					<div class="blog-tabs-container">
+						<input checked id="personal" name="blog-tab" type="radio" />
+						<input id="technical" name="blog-tab" type="radio" />
+						<ul class="blog-tabs">
+							<li class="blog-tab"><label for="personal">Personal</label></li>
+							<li class="blog-tab"><label for="technical">Technical</label></li>
+						</ul>
+						<div class="blog-tab-content">
+							<ul class="blog-preview-list">
+								<li class="blog-preview">
+									<a
+										aria-label="Breaking into Tech blog post"
+										class="blog-preview-link"
+										href="./breaking-into-tech"
+									>
+										<h2 class="blog-preview-title">Breaking into Tech</h2>
+										<img
+											alt="a programmer working at a desk"
+											class="blog-preview-image"
+											height="192"
+											src="../assets/blog/breaking-into-tech.jpg"
+											width="288"
+										/>
+										<div class="blog-preview-text">
+											<h2 aria-hidden="true" class="blog-preview-title">
+												Breaking into Tech
+											</h2>
+											<p>Looking back on my first 2+ years at a startup</p>
+											<small>February 18, 2023</small>
+										</div>
+									</a>
+								</li>
+								<li class="blog-preview">
+									<a
+										aria-label="Honouring Heroes blog post"
+										class="blog-preview-link"
+										href="./honouring-heroes"
+									>
+										<h2 class="blog-preview-title">Honouring Heroes</h2>
+										<img
+											alt="a field of poppies"
+											class="blog-preview-image"
+											height="192"
+											src="../assets/blog/honouring-heroes.png"
+											width="288"
+										/>
+										<div class="blog-preview-text">
+											<h2 aria-hidden="true" class="blog-preview-title">
+												Honouring Heroes
+											</h2>
+											<p>Stories from the Second World War</p>
+											<small>November 14, 2020</small>
+										</div>
+									</a>
+								</li>
+								<li class="blog-preview">
+									<a
+										aria-label="Staying Positive blog post"
+										class="blog-preview-link"
+										href="./staying-positive"
+									>
+										<h2 class="blog-preview-title">Staying Positive</h2>
+										<img
+											alt="the slogan 'keep calm and carry on' on a red background"
+											class="blog-preview-image"
+											height="192"
+											src="../assets/blog/staying-positive.png"
+											width="288"
+										/>
+										<div class="blog-preview-text">
+											<h2 aria-hidden="true" class="blog-preview-title">
+												Staying Positive
+											</h2>
+											<p>My approach to coping with hardship</p>
+											<small>November 7, 2020</small>
+										</div>
+									</a>
+								</li>
+								<li class="blog-preview">
+									<a
+										aria-label="Living in Mexico blog post"
+										class="blog-preview-link"
+										href="./living-in-mexico"
+									>
+										<h2 class="blog-preview-title">Living in Mexico</h2>
+										<img
+											alt="Mexican flag"
+											class="blog-preview-image"
+											height="192"
+											src="../assets/blog/living-in-mexico.jpg"
+											width="288"
+										/>
+										<div class="blog-preview-text">
+											<h2 aria-hidden="true" class="blog-preview-title">
+												Living in Mexico
+											</h2>
+											<p>Memories from my time in Mexico</p>
+											<small>October 31, 2020</small>
+										</div>
+									</a>
+								</li>
+								<li class="blog-preview">
+									<a
+										aria-label="Becoming Bilingual blog post"
+										class="blog-preview-link"
+										href="./becoming-bilingual"
+									>
+										<h2 class="blog-preview-title">Becoming Bilingual</h2>
+										<img
+											alt="Spanish flag"
+											class="blog-preview-image"
+											height="192"
+											src="../assets/blog/becoming-bilingual.png"
+											width="288"
+										/>
+										<div class="blog-preview-text">
+											<h2 aria-hidden="true" class="blog-preview-title">
+												Becoming Bilingual
+											</h2>
+											<p>Exploring the process I used to learn Spanish</p>
+											<small>October 24, 2020</small>
+										</div>
+									</a>
+								</li>
+								<li class="blog-preview">
+									<a
+										aria-label="Running a Marathon blog post"
+										class="blog-preview-link"
+										href="./running-a-marathon"
+									>
+										<h2 class="blog-preview-title">Running a Marathon</h2>
+										<img
+											alt="a group of people running a marathon"
+											class="blog-preview-image"
+											height="192"
+											src="../assets/blog/running-a-marathon.jpg"
+											width="288"
+										/>
+										<div class="blog-preview-text">
+											<h2 aria-hidden="true" class="blog-preview-title">
+												Running a Marathon
+											</h2>
+											<p>Reflecting on the time I ran 42.2 kilometres</p>
+											<small>October 17, 2020</small>
+										</div>
+									</a>
+								</li>
+								<li class="blog-preview">
+									<a
+										aria-label="Getting in Shape blog post"
+										class="blog-preview-link"
+										href="./getting-in-shape"
+									>
+										<h2 class="blog-preview-title">Getting in Shape</h2>
+										<img
+											alt="a barbell on the floor of a gym"
+											class="blog-preview-image"
+											height="192"
+											src="../assets/blog/getting-in-shape.jpg"
+											width="288"
+										/>
+										<div class="blog-preview-text">
+											<h2 aria-hidden="true" class="blog-preview-title">
+												Getting in Shape
+											</h2>
+											<p>My journey from overweight to fitness enthusiast</p>
+											<small>October 10, 2020</small>
+										</div>
+									</a>
+								</li>
+								<li class="blog-preview">
+									<a
+										aria-label="Learning to Code blog post"
+										class="blog-preview-link"
+										href="./learning-to-code"
+									>
+										<h2 class="blog-preview-title">Learning to Code</h2>
+										<img
+											alt="a screen with computer code"
+											class="blog-preview-image"
+											height="192"
+											src="../assets/blog/learning-to-code.png"
+											width="288"
+										/>
+										<div class="blog-preview-text">
+											<h2 aria-hidden="true" class="blog-preview-title">
+												Learning to Code
+											</h2>
+											<p>Detailing my transition into the tech industry</p>
+											<small>October 3, 2020</small>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="blog-tab-content">
+							<ul class="blog-preview-list">
+								<li class="blog-preview">
+									<a
+										aria-label="React HTML Elements blog post"
+										class="blog-preview-link"
+										href="./react-html-elements"
+									>
+										<h2 class="blog-preview-title">React HTML Elements</h2>
+										<div class="blog-preview-text">
+											<h2 aria-hidden="true" class="blog-preview-title">
+												React HTML Elements
+											</h2>
+											<p>Embedding React components in HTML</p>
+											<small>January 4, 2025</small>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</main>
 			</div>
 			<footer class="page-footer">
