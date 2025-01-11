@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta
+			content="Managing stringified data in TypeScript"
+			name="description"
+		/>
+		<title>Typesafe Local Storage | Max Monis</title>
+		<link href="https://fonts.googleapis.com" rel="preconnect" />
+		<link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link href="../blog-post.css" rel="stylesheet" />
+		<link
+			href="../../assets/favicon/apple-touch-icon.png"
+			media="(prefers-color-scheme: light)"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		<link
+			href="../../assets/favicon/favicon-32x32.png"
+			media="(prefers-color-scheme: light)"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		<link
+			href="../../assets/favicon/favicon-16x16.png"
+			media="(prefers-color-scheme: light)"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		<link
+			href="../../assets/favicon/dark-apple-touch-icon.png"
+			media="(prefers-color-scheme: dark)"
+			rel="apple-touch-icon"
+			sizes="180x180"
+		/>
+		<link
+			href="../../assets/favicon/dark-favicon-32x32.png"
+			media="(prefers-color-scheme: dark)"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
+		/>
+		<link
+			href="../../assets/favicon/dark-favicon-16x16.png"
+			media="(prefers-color-scheme: dark)"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
+		/>
+		<link href="../../site.webmanifest" rel="manifest" />
+	</head>
+	<body class="noscript">
+		<div class="page">
+			<div class="page-wrapper">
+				<header class="page-header">
+					<a aria-label="homepage" class="site-logo" href="../../">
+						<img
+							alt="logo of Max Monis's personal website, featuring stylized initials 'MM' in black and white"
+							src="../../assets/favicon/apple-touch-icon.png"
+						/>
+						Max Monis
+					</a>
+					<nav class="page-nav" role="navigation">
+						<input
+							aria-label="toggle menu visibility"
+							id="menu-toggle"
+							tabindex="-1"
+							type="checkbox"
+						/>
+						<span></span>
+						<span></span>
+						<span></span>
+						<ul>
+							<li><a href="../../">Portfolio</a></li>
+							<li><a aria-current="true" href="../">Blog</a></li>
+							<li><a href="../../resume.pdf" target="_blank">Resume</a></li>
+							<li>
+								<a
+									aria-label="github profile"
+									href="https://github.com/maxmonis"
+									rel="noreferrer"
+									target="_blank"
+									><img alt="Github logo" src="../../assets/logos/github.svg"
+								/></a>
+							</li>
+							<li>
+								<a
+									aria-label="linkedin profile"
+									href="https://www.linkedin.com/in/maxmonis/"
+									rel="noreferrer"
+									target="_blank"
+									><img
+										alt="Linkedin logo"
+										src="../../assets/logos/linkedin.svg"
+								/></a>
+							</li>
+							<li>
+								<a
+									aria-label="compose an email"
+									href="mailto:themaxmonis@gmail.com"
+								>
+									<img alt="Gmail logo" src="../../assets/logos/gmail.svg"
+								/></a>
+							</li>
+						</ul>
+					</nav>
+				</header>
+				<main class="page-content blog-post">
+					<h1 class="blog-post-title">Typesafe Local Storage</h1>
+					<h2 class="blog-post-date">Saturday, January 11, 2025</h2>
+					<div class="blog-post-content">
+						<p class="blog-post-paragraph">
+							Let's say we have a TypeScript web application (the exact stack is
+							not relevant) with token-based user authentication. The user's
+							token should be stored in the browser's local storage so that they
+							don't need to log in again whenever they reload or open our app.
+							The token must be removed from local storage if it's invalid or if
+							the user logs out.
+						</p>
+						<p class="blog-post-paragraph">
+							This use case is very simple because the value we're storing is a
+							string and as a result no parsing needs to occur. When we get a
+							token following a successful login, we can store it by calling
+							<code>localStorage.setItem("token", token)</code>. When we
+							subsequently want to access the token, we can call
+							<code>localStorage.getItem("token")</code>. Finally, when we need
+							to remove the token, we can call
+							<code>localStorage.removeItem("token")</code>.
+						</p>
+						<p class="blog-post-paragraph">
+							This approach is fine for the most part, but there's a small nit
+							to pick - we (or a junior dev or AI coding assistant) might
+							accidentally misspell or erroneously capitalize "token" while
+							trying to access or modify the value in a certain place, and there
+							would be no way for TypeScript to let us know that this key is
+							incorrect. We can solve this problem with a simple abstraction:
+						</p>
+						<pre class="blog-post-snippet">
+class LocalStorage {
+  private readonly key: string
+
+  constructor(key: string) {
+    this.key = key
+  }
+
+  get() {
+    return localStorage.getItem(this.key)
+  }
+
+  set(item: string) {
+    localStorage.setItem(this.key, item)
+  }
+
+  remove() {
+    localStorage.removeItem(this.key)
+  }
+}
+
+export const localToken = new LocalStorage("token")
+						</pre
+						>
+						<p class="blog-post-paragraph">
+							This allows us to import <code>localToken</code> wherever we need
+							to get, set, or remove the token. Now let's suppose that we also
+							need to add a dark mode to our app. We can extend the
+							functionality of our class accordingly:
+						</p>
+						<pre class="blog-post-snippet">
+class LocalStorage<
+  K extends "dark" | "token",
+  T extends K extends "dark" ? boolean : string
+> {
+  private readonly key: K
+
+  constructor(key: K) {
+    this.key = key
+  }
+
+  get(): T | null {
+    const item = localStorage.getItem(this.key)
+    return item ? JSON.parse(item) : null
+  }
+
+  set(item: T) {
+    localStorage.setItem(this.key, JSON.stringify(item))
+  }
+
+  remove() {
+    localStorage.removeItem(this.key)
+  }
+}
+
+export const localDark = new LocalStorage("dark")
+export const localToken = new LocalStorage("token")
+            </pre>
+						<p class="blog-post-paragraph">
+							We're leveraging generics and union types to ensure that only
+							"dark" or "token" are allowed as keys. The beauty of this
+							implementation is that TypeScript will prevent us from passing any
+							value other than a boolean to <code>localDark.set</code>, meaning
+							that we can safely cast the parsed return value of
+							<code>localDark.get</code> to a boolean.
+						</p>
+						<p class="blog-post-paragraph">
+							Without our abstraction we would have to do something like this:
+						</p>
+						<pre class="blog-post-snippet">
+const dark = localStorage.getItem("dark")
+if (dark) {
+  const parsedDark = JSON.parse(dark)
+  if (typeof parsedDark === "boolean") {
+    // do something
+  }
+}
+						</pre
+						>
+						<p class="blog-post-paragraph">
+							This is pretty clunky but is necessary to avoid unexpected issues
+							since
+							<code>JSON.parse</code> has a return type of <code>any</code>. We
+							could also simply check if <code>dark === "true"</code>, but keep
+							in mind that this is a simple example for demonstration purposes
+							and in a real application we may need to store more complex data
+							structures which would be onerous to parse safely.
+						</p>
+
+						<p>
+							If we want to manage a separate dark mode setting for each
+							individual user who logs in to this browser on this device, we can
+							update our generics:
+						</p>
+						<pre class="blog-post-snippet">
+// utils/storage.ts
+
+export class LocalStorage<
+  K extends `dark_${string}` | "token",
+  T extends K extends `dark_${string}` ? boolean : string
+> {
+  // same body as above
+}
+
+export const localToken = new LocalStorage("token")
+
+
+
+// components/theme-toggle.tsx
+
+import * as React from "react"
+import { LocalStorage } from "../utils/storage"
+
+export function ThemeToggle(props: { userId: string }) {
+  const localDark = new LocalStorage(`dark_${props.userId}`)
+  const [dark, setDark] = React.useState(localDark.get() ?? false)
+  function handleToggle() {
+    localDark.set(!dark)
+    setDark(!dark)
+  }
+  return <&zwj;button onClick={handleToggle}>{dark ? "🌛" : "🌞"}<&zwj;/button>
+}
+						</pre
+						>
+						<p class="blog-post-paragraph">
+							Since we can't know the user's ID in advance, we have to export
+							LocalStorage itself instead of just instances. The most common use
+							case for this pattern is to persist WIP form values.
+						</p>
+						<p>
+							If you're using a framework like Next.js which supports
+							server-side rendering, you may need to update the methods like so:
+						</p>
+						<pre class="blog-post-snippet">
+get(): T | null {
+  if (typeof localStorage === "undefined") return null
+  const item = localStorage.getItem(this.key)
+  return item ? JSON.parse(item) : null
+}
+
+set(item: T) {
+  if (typeof localStorage === "undefined") return
+  localStorage.setItem(this.key, JSON.stringify(item))
+}
+
+remove() {
+  if (typeof localStorage === "undefined") return
+  localStorage.removeItem(this.key)
+}
+						</pre
+						>
+						<p class="blog-post-paragraph">
+							This will ensure that there aren't issues during prerender, since
+							<code>window.localStorage</code> only exists on the browser, not
+							the server (as of the time of writing, at least). You may also
+							need lifecycle methods to ensure that the component calls local
+							storage only after it's mounted. Here's a quick example using our
+							sample component from the previous section:
+						</p>
+						<pre class="blog-post-snippet">
+"use client"
+import * as React from "react"
+import { LocalStorage } from "../utils/storage"
+
+export function ThemeToggle(props: { userId: string }) {
+  const localDark = new LocalStorage(`dark_${props.userId}`)
+  const [dark, setDark] = React.useState(false)
+  const mounted = React.useRef(false)
+  React.useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true
+      setDark(localDark.get() ?? false)
+    }
+  }, [])
+  function handleToggle() {
+    localDark.set(!dark)
+    setDark(!dark)
+  }
+  return <&zwj;button onClick={handleToggle}>{dark ? "🌛" : "🌞"}<&zwj;/button>
+}
+						</pre
+						>
+						<p class="blog-post-paragraph">
+							ThemeToggle is a React/Next.js component in the examples above,
+							but the LocalStorage class can be used in any JavaScript app.
+							Similarly, I used a boolean as an example of a value which
+							requires stringification and parsing but you can also manage
+							non-primitive data like objects and arrays. Just be aware that if
+							you update the shape of the data in a consequential way, it's
+							advisable to update the key as well since your users' browsers may
+							contain previously stored values.
+						</p>
+						<p class="blog-post-paragraph">
+							I use some variation of this approach in just about every project
+							I work on, and I hope you find it useful as well. Thanks for
+							reading!
+						</p>
+					</div>
+					<div class="blog-post-footer">
+						<div class="blog-post-link">
+							<a href="../react-html-elements">Previous: React HTML Elements</a>
+						</div>
+					</div>
+				</main>
+			</div>
+			<footer class="page-footer">
+				<p>Made with ☕️ by Max Monis</p>
+				<a
+					aria-label="Max Monis's page on Buy Me a Coffee"
+					class="bmc-link"
+					href="https://buymeacoffee.com/maxmonis"
+					rel="noreferrer"
+					target="_blank"
+					><img alt="Buy Me a Coffee logo" src="../../assets/logos/bmc.svg" />
+				</a>
+			</footer>
+		</div>
+		<script type="text/javascript" src="../../scripts/global.js"></script>
+	</body>
+</html>

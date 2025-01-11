@@ -7,7 +7,7 @@
   </url>
   <url>
     <loc>https://maxmonis.com/blog/</loc>
-    <lastmod>2025-01-04</lastmod>
+    <lastmod>2025-01-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -61,7 +61,13 @@
   </url>
   <url>
     <loc>https://maxmonis.com/blog/react-html-elements/</loc>
-    <lastmod>2025-01-04</lastmod>
+    <lastmod>2025-01-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://maxmonis.com/blog/typesafe-locale-storage/</loc>
+    <lastmod>2025-01-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
