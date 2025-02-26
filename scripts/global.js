@@ -36,3 +36,10 @@ document.addEventListener("keyup", function (event) {
 	else if (event.key === "Tab")
 		checkbox.checked = document.querySelector(".page-nav a:focus") !== null;
 });
+
+var observer = new IntersectionObserver(function (entries) {
+	for (var i = 0; i < entries.length; i++)
+		entries[i].target.classList.toggle("show", entries[i].isIntersecting);
+});
+var sections = document.querySelectorAll(".slide-in");
+for (var i = 0; i < sections.length; i++) observer.observe(sections[i]);

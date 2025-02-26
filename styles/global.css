@@ -247,7 +247,9 @@ body.dark .page-nav a img {
 
 .page-content {
   margin-block-start: var(--header-height);
-  padding-inline: 1.5rem;
+  max-width: 100vw;
+  overflow-x: hidden;
+  padding: 0 1.5rem 1.5rem;
 }
 
 .page-footer {
@@ -268,4 +270,28 @@ body.dark .page-nav a img {
 
 .dark-mode-toggle {
   font-size: 1.5rem;
+}
+
+.slide-in {
+  filter: blur(0.25rem);
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+.slide-in:nth-child(even) {
+  transform: translateX(100%);
+}
+
+.noscript .slide-in,
+.slide-in.show {
+  filter: blur(0);
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (prefer-reduced-motion: reduce) {
+  .slide-in {
+    transition: none;
+  }
 }
