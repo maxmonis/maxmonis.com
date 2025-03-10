@@ -1,18 +1,18 @@
-body {
-  line-height: inherit;
+* {
+  font: inherit;
   margin: 0;
+  padding: 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0;
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+button {
+  border: none;
+  background: inherit;
+  cursor: pointer
 }
 
 h1,
@@ -24,74 +24,16 @@ h6 {
   text-wrap: balance;
 }
 
-p,
-figcaption {
-  text-wrap: pretty;
-}
-
-a {
-  color: inherit;
-  text-decoration: inherit;
-}
-
-button {
-  border: none;
-  color: inherit;
-  font-family: inherit;
-  font-feature-settings: inherit;
-  font-size: 100%;
-  font-variation-settings: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  margin: 0;
-  padding: 0;
-  text-transform: none;
-}
-
-[role=button],
-button {
-  cursor: pointer
-}
-
-[type=button],
-[type=reset],
-[type=submit],
-button {
-  -webkit-appearance: button;
-  appearance: button;
-  background-color: transparent;
-  background-image: none;
-}
-
-
-b,
-strong {
-  font-weight: 700;
-}
-
-small {
-  font-size: 80%;
-}
-
-ol,
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-img,
-svg {
+img {
   display: block;
-}
-
-img,
-video {
   height: auto;
   max-width: 100%
 }
 
-figure,
-pre {
-  margin: 0;
+p {
+  text-wrap: pretty;
+}
+
+ul {
+  list-style: none;
 }
