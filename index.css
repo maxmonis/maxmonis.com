@@ -5,13 +5,16 @@
     opacity: 0;
   }
 
+  20% {
+    opacity: 0;
+  }
+
   100% {
     opacity: 1;
   }
 }
 
 .hero-image {
-  animation: fade-in 1.5s;
   background-image:
     linear-gradient(to top,
       rgba(34, 49, 63, 0.6),
@@ -26,6 +29,12 @@
   min-width: 100vw;
   position: relative;
   z-index: -1;
+}
+
+@media not (prefers-reduced-motion: reduce) {
+  .hero-image {
+    animation: fade-in 2s;
+  }
 }
 
 .hero-image.hide,
