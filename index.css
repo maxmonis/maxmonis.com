@@ -82,6 +82,18 @@
   margin-block: 2rem;
 }
 
+.portfolio-video {
+  max-width: 70ch;
+  width: 100%;
+}
+
+.portfolio-video iframe {
+  aspect-ratio: 16 / 9;
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
 .portfolio-description {
   max-width: 70ch;
 }
