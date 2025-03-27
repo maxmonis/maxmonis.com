@@ -36,10 +36,6 @@
   line-height: 1.75;
 }
 
-.blog-post-paragraph a {
-  text-decoration: underline;
-}
-
 .blog-post-snippet {
   margin-inline: auto;
   max-width: 100%;
@@ -54,8 +50,4 @@
   justify-content: center;
   margin-block-start: 5rem;
   text-align: center;
-}
-
-.blog-post-link {
-  text-decoration: underline;
 }

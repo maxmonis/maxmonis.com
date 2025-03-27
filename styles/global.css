@@ -76,6 +76,7 @@ body.dark {
   font-size: 1.5rem;
   gap: 0.5rem;
   margin-inline-start: 1rem;
+  text-decoration: inherit;
 }
 
 .site-logo img {
@@ -111,6 +112,10 @@ body.dark .page-nav a img {
 .page-nav a[aria-current="page"],
 .page-nav a[aria-current="true"] {
   font-weight: 700;
+}
+
+.page-nav a {
+  text-decoration: inherit;
 }
 
 .page-nav a:hover {

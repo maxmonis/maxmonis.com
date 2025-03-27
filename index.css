@@ -99,7 +99,6 @@
 }
 
 .portfolio-description a {
-  text-decoration: underline;
   white-space: nowrap;
 }
 
@@ -135,12 +134,7 @@
 }
 
 .portfolio-site-description a {
-  text-decoration: underline;
   white-space: nowrap;
-}
-
-.portfolio-site-link {
-  text-decoration: underline;
 }
 
 .additional-repos,
@@ -201,7 +195,6 @@
 
 .additional-repo a,
 .previous-project a {
-  text-decoration: underline;
   white-space: nowrap;
 }
 
@@ -243,8 +236,4 @@
 
 .about-me-subtitle:not(:first-of-type) {
   margin-block-start: 0.75rem;
-}
-
-.about-me-text a {
-  text-decoration: underline;
 }
