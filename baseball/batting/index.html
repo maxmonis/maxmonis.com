@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Batting Prorater</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0 auto;
+				max-width: 20rem;
+				padding: 1.5rem;
+			}
+			.input-group {
+				margin: 0.5rem 0;
+			}
+			label {
+				display: inline-block;
+				width: 10rem;
+			}
+			table {
+				border-collapse: collapse;
+				margin-top: 1.5rem;
+				width: 100%;
+			}
+			th,
+			td {
+				border: 1px solid #ddd;
+				padding: 0.5rem;
+				text-align: left;
+			}
+			th {
+				background-color: #f2f2f2;
+			}
+			button {
+				background-color: #4caf50;
+				border: none;
+				color: white;
+				cursor: pointer;
+				font-size: 1rem;
+				margin: 0.5rem 0;
+				padding: 0.5rem 1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Batting Prorater</h1>
+
+		<form>
+			<div class="input-group">
+				<label>Prorated Games:</label>
+				<input type="number" name="prorateGames" min="1" value="162" />
+			</div>
+			<div class="input-group">
+				<label>Games Played:</label>
+				<input type="number" name="games" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Team Games:</label>
+				<input type="number" name="teamgames" min="0" />
+			</div>
+			<div class="input-group">
+				<label>At Bats:</label>
+				<input type="number" name="atBats" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Hits:</label>
+				<input type="number" name="hits" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Doubles:</label>
+				<input type="number" name="doubles" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Triples:</label>
+				<input type="number" name="triples" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Home Runs:</label>
+				<input type="number" name="homeruns" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Runs Batted In:</label>
+				<input type="number" name="rbi" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Runs Scored:</label>
+				<input type="number" name="runs" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Stolen Bases:</label>
+				<input type="number" name="stolen" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Caught Stealing:</label>
+				<input type="number" name="caught" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Walks:</label>
+				<input type="number" name="walks" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Strikeouts:</label>
+				<input type="number" name="strikeouts" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Hit By Pitch:</label>
+				<input type="number" name="hbp" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Sacrifice Flies:</label>
+				<input type="number" name="sacFlies" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Sacrifice Hits:</label>
+				<input type="number" name="sacHits" min="0" />
+			</div>
+			<button type="submit">Calculate Stats</button>
+		</form>
+
+		<div id="results"></div>
+
+		<script>
+			document
+				.querySelector("form")
+				.addEventListener("submit", function (event) {
+					event.preventDefault();
+
+					// Get the values from the form
+					var prorateGames = parseInt(event.target.prorateGames.value) || 162;
+					var games = parseInt(event.target.games.value) || 0;
+					var teamgames = parseInt(event.target.teamgames.value) || games;
+					var atBats = parseInt(event.target.atBats.value) || 0;
+					var runs = parseInt(event.target.runs.value) || 0;
+					var hits = parseInt(event.target.hits.value) || 0;
+					var doubles = parseInt(event.target.doubles.value) || 0;
+					var triples = parseInt(event.target.triples.value) || 0;
+					var homeruns = parseInt(event.target.homeruns.value) || 0;
+					var rbi = parseInt(event.target.rbi.value) || 0;
+					var stolen = parseInt(event.target.stolen.value) || 0;
+					var caught = parseInt(event.target.caught.value) || 0;
+					var walks = parseInt(event.target.walks.value) || 0;
+					var strikeouts = parseInt(event.target.strikeouts.value) || 0;
+					var hbp = parseInt(event.target.hbp.value) || 0;
+					var sacFlies = parseInt(event.target.sacFlies.value) || 0;
+					var sacHits = parseInt(event.target.sacHits.value) || 0;
+
+					// Calculate proration factor
+					var prorateFactor = teamgames > 0 ? prorateGames / teamgames : 0;
+
+					// Calculate prorated counting stats
+					var pGames = Math.round(games * prorateFactor);
+					var pAtBats = Math.round(atBats * prorateFactor);
+					var pRuns = Math.round(runs * prorateFactor);
+					var pHits = Math.round(hits * prorateFactor);
+					var pDoubles = Math.round(doubles * prorateFactor);
+					var pTriples = Math.round(triples * prorateFactor);
+					var pHomeruns = Math.round(homeruns * prorateFactor);
+					var pRbi = Math.round(rbi * prorateFactor);
+					var pStolen = Math.round(stolen * prorateFactor);
+					var pCaught = Math.round(caught * prorateFactor);
+					var pWalks = Math.round(walks * prorateFactor);
+					var pStrikeouts = Math.round(strikeouts * prorateFactor);
+					var pHbp = Math.round(hbp * prorateFactor);
+					var pSacFlies = Math.round(sacFlies * prorateFactor);
+					var pSacHits = Math.round(sacHits * prorateFactor);
+
+					// Calculate derived stats
+					var plateAppearances = atBats + walks + hbp + sacFlies;
+					var pPlateAppearances = Math.round(plateAppearances * prorateFactor);
+					var totalBases = hits + doubles + 2 * triples + 3 * homeruns;
+					var pTotalBases = pHits + pDoubles + 2 * pTriples + 3 * pHomeruns;
+
+					var battingAvg = atBats > 0 ? hits / atBats : 0;
+					var obp =
+						plateAppearances > 0 ? (hits + walks + hbp) / plateAppearances : 0;
+					var slugging = atBats > 0 ? totalBases / atBats : 0;
+					var ops = obp + slugging;
+
+					// Create results table
+					document.querySelector("#results").innerHTML =
+						"<h2>Prorated Stats (" +
+						prorateGames +
+						" games)</h2>" +
+						"<table>" +
+						"<tr><th>Statistic</th><th>Value</th></tr>" +
+						"<tr><td>Games</td><td>" +
+						pGames +
+						"</td></tr>" +
+						"<tr><td>Plate Appearances</td><td>" +
+						pPlateAppearances +
+						"</td></tr>" +
+						"<tr><td>At Bats</td><td>" +
+						pAtBats +
+						"</td></tr>" +
+						"<tr><td>Hits</td><td>" +
+						pHits +
+						"</td></tr>" +
+						"<tr><td>Doubles</td><td>" +
+						pDoubles +
+						"</td></tr>" +
+						"<tr><td>Triples</td><td>" +
+						pTriples +
+						"</td></tr>" +
+						"<tr><td>Home Runs</td><td>" +
+						pHomeruns +
+						"</td></tr>" +
+						"<tr><td>Runs Batted In</td><td>" +
+						pRbi +
+						"</td></tr>" +
+						"<tr><td>Runs Scored</td><td>" +
+						pRuns +
+						"</td></tr>" +
+						"<tr><td>Stolen Bases</td><td>" +
+						pStolen +
+						"</td></tr>" +
+						"<tr><td>Caught Stealing</td><td>" +
+						pCaught +
+						"</td></tr>" +
+						"<tr><td>Walks</td><td>" +
+						pWalks +
+						"</td></tr>" +
+						"<tr><td>Strikeouts</td><td>" +
+						pStrikeouts +
+						"</td></tr>" +
+						"<tr><td>Hit By Pitch</td><td>" +
+						pHbp +
+						"</td></tr>" +
+						"<tr><td>Sacrifice Flies</td><td>" +
+						pSacFlies +
+						"</td></tr>" +
+						"<tr><td>Sacrifice Hits</td><td>" +
+						pSacHits +
+						"</td></tr>" +
+						"<tr><td>Total Bases</td><td>" +
+						pTotalBases +
+						"</td></tr>" +
+						"<tr><td>Batting Average</td><td>" +
+						battingAvg.toFixed(3).replace("0.", ".") +
+						"</td></tr>" +
+						"<tr><td>On-Base Percentage</td><td>" +
+						obp.toFixed(3).replace("0.", ".") +
+						"</td></tr>" +
+						"<tr><td>Slugging Percentage</td><td>" +
+						slugging.toFixed(3).replace("0.", ".") +
+						"</td></tr>" +
+						"<tr><td>OPS</td><td>" +
+						ops.toFixed(3).replace("0.", ".") +
+						"</td></tr>" +
+						"</table>";
+				});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pitching Prorater</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0 auto;
+				max-width: 20rem;
+				padding: 1.5rem;
+			}
+			.input-group {
+				margin: 0.5rem 0;
+			}
+			label {
+				display: inline-block;
+				width: 10rem;
+			}
+			table {
+				border-collapse: collapse;
+				margin-top: 1.5rem;
+				width: 100%;
+			}
+			th,
+			td {
+				border: 1px solid #ddd;
+				padding: 0.5rem;
+				text-align: left;
+			}
+			th {
+				background-color: #f2f2f2;
+			}
+			button {
+				background-color: #4caf50;
+				border: none;
+				color: white;
+				cursor: pointer;
+				font-size: 1rem;
+				margin: 0.5rem 0;
+				padding: 0.5rem 1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Pitching Prorater</h1>
+
+		<form>
+			<div class="input-group">
+				<label>Prorated Games:</label>
+				<input type="number" name="prorateGames" min="1" value="162" />
+			</div>
+			<div class="input-group">
+				<label>Games:</label>
+				<input type="number" name="gamesPitched" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Team Games:</label>
+				<input type="number" name="teamgames" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Wins:</label>
+				<input type="number" name="wins" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Losses:</label>
+				<input type="number" name="losses" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Innings Pitched:</label>
+				<input type="number" name="inningsPitched" min="0" step="0.1" />
+			</div>
+			<div class="input-group">
+				<label>Strikeouts:</label>
+				<input type="number" name="strikeouts" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Walks:</label>
+				<input type="number" name="walks" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Earned Runs:</label>
+				<input type="number" name="earnedRuns" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Hits Allowed:</label>
+				<input type="number" name="hitsAllowed" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Home Runs Allowed:</label>
+				<input type="number" name="homeRunsAllowed" min="0" />
+			</div>
+			<button type="submit">Calculate Stats</button>
+		</form>
+
+		<div id="results"></div>
+
+		<script>
+			document
+				.querySelector("form")
+				.addEventListener("submit", function (event) {
+					event.preventDefault();
+
+					// Get the values from the form
+					var prorateGames = parseInt(event.target.prorateGames.value) || 162;
+					var gamesPitched = parseInt(event.target.gamesPitched.value) || 0;
+					var teamgames =
+						parseInt(event.target.teamgames.value) || gamesPitched;
+					var inningsPitched =
+						parseFloat(event.target.inningsPitched.value) || 0;
+					var strikeouts = parseInt(event.target.strikeouts.value) || 0;
+					var walks = parseInt(event.target.walks.value) || 0;
+					var earnedRuns = parseInt(event.target.earnedRuns.value) || 0;
+					var hitsAllowed = parseInt(event.target.hitsAllowed.value) || 0;
+					var homeRunsAllowed =
+						parseInt(event.target.homeRunsAllowed.value) || 0;
+					var wins = parseInt(event.target.wins.value) || 0;
+					var losses = parseInt(event.target.losses.value) || 0;
+
+					// Calculate proration factor
+					var prorateFactor = teamgames > 0 ? prorateGames / teamgames : 0;
+
+					// Calculate prorated counting stats
+					var pGamesPitched = Math.round(gamesPitched * prorateFactor);
+					var pInningsPitched = (inningsPitched * prorateFactor).toFixed(1);
+					var pStrikeouts = Math.round(strikeouts * prorateFactor);
+					var pWalks = Math.round(walks * prorateFactor);
+					var pEarnedRuns = Math.round(earnedRuns * prorateFactor);
+					var pHitsAllowed = Math.round(hitsAllowed * prorateFactor);
+					var pHomeRunsAllowed = Math.round(homeRunsAllowed * prorateFactor);
+					var pWins = Math.round(wins * prorateFactor);
+					var pLosses = Math.round(losses * prorateFactor);
+
+					// Calculate derived stats
+					var ERA =
+						inningsPitched > 0
+							? ((earnedRuns * 9) / inningsPitched).toFixed(2)
+							: "0.00";
+					var WHIP =
+						inningsPitched > 0
+							? ((walks + hitsAllowed) / inningsPitched).toFixed(2)
+							: "0.00";
+					var KBB = walks > 0 ? (strikeouts / walks).toFixed(2) : "0.00";
+					var winningPercentage =
+						pWins > 0 ? (pWins / (pWins + pLosses)).toFixed(3) : "0.00";
+					var hitsPerNine =
+						inningsPitched > 0
+							? ((hitsAllowed / inningsPitched) * 9).toFixed(2)
+							: "0.00";
+					var walksPerNine =
+						inningsPitched > 0
+							? ((walks / inningsPitched) * 9).toFixed(2)
+							: "0.00";
+					var homeRunsPerNine =
+						inningsPitched > 0
+							? ((homeRunsAllowed / inningsPitched) * 9).toFixed(2)
+							: "0.00";
+					var strikeoutPerNine =
+						inningsPitched > 0
+							? ((strikeouts / inningsPitched) * 9).toFixed(2)
+							: "0.00";
+
+					// Create results table
+					document.querySelector("#results").innerHTML =
+						"<h2>Prorated Stats (" +
+						prorateGames +
+						" games)</h2>" +
+						"<table>" +
+						"<tr><th>Statistic</th><th>Value</th></tr>" +
+						"<tr><td>Games Pitched</td><td>" +
+						pGamesPitched +
+						"</td></tr>" +
+						"<tr><td>Innings Pitched</td><td>" +
+						pInningsPitched +
+						"</td></tr>" +
+						"<tr><td>Strikeouts</td><td>" +
+						pStrikeouts +
+						"</td></tr>" +
+						"<tr><td>Walks</td><td>" +
+						pWalks +
+						"</td></tr>" +
+						"<tr><td>Earned Runs</td><td>" +
+						pEarnedRuns +
+						"</td></tr>" +
+						"<tr><td>Hits Allowed</td><td>" +
+						pHitsAllowed +
+						"</td></tr>" +
+						"<tr><td>Home Runs Allowed</td><td>" +
+						pHomeRunsAllowed +
+						"</td></tr>" +
+						"<tr><td>Wins</td><td>" +
+						pWins +
+						"</td></tr>" +
+						"<tr><td>Losses</td><td>" +
+						pLosses +
+						"</td></tr>" +
+						"<tr><td>ERA</td><td>" +
+						ERA +
+						"</td></tr>" +
+						"<tr><td>WHIP</td><td>" +
+						WHIP +
+						"</td></tr>" +
+						"<tr><td>K/BB</td><td>" +
+						KBB +
+						"</td></tr>" +
+						"<tr><td>Winning Percentage</td><td>" +
+						winningPercentage.replace("0.", ".") +
+						"</td></tr>" +
+						"<tr><td>Hits Per 9 IP</td><td>" +
+						hitsPerNine +
+						"</td></tr>" +
+						"<tr><td>Walks Per 9 IP</td><td>" +
+						walksPerNine +
+						"</td></tr>" +
+						"<tr><td>Home Runs Per 9 IP</td><td>" +
+						homeRunsPerNine +
+						"</td></tr>" +
+						"<tr><td>Strikeouts Per 9 IP</td><td>" +
+						strikeoutPerNine +
+						"</td></tr>" +
+						"</table>";
+				});
+		</script>
+	</body>
+</html>
