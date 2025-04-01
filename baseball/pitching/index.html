@@ -54,6 +54,10 @@
 				<input type="number" name="gamesPitched" min="0" />
 			</div>
 			<div class="input-group">
+				<label>Games Started:</label>
+				<input type="number" name="gamesStarted" min="0" />
+			</div>
+			<div class="input-group">
 				<label>Team Games:</label>
 				<input type="number" name="teamgames" min="0" />
 			</div>
@@ -64,6 +68,14 @@
 			<div class="input-group">
 				<label>Losses:</label>
 				<input type="number" name="losses" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Shutouts:</label>
+				<input type="number" name="shutouts" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Saves:</label>
+				<input type="number" name="saves" min="0" />
 			</div>
 			<div class="input-group">
 				<label>Innings Pitched:</label>
@@ -103,8 +115,13 @@
 					// Get the values from the form
 					var prorateGames = parseInt(event.target.prorateGames.value) || 162;
 					var gamesPitched = parseInt(event.target.gamesPitched.value) || 0;
+					var gamesStarted = parseInt(event.target.gamesStarted.value) || 0;
 					var teamgames =
 						parseInt(event.target.teamgames.value) || gamesPitched;
+					var wins = parseInt(event.target.wins.value) || 0;
+					var losses = parseInt(event.target.losses.value) || 0;
+					var shutouts = parseInt(event.target.shutouts.value) || 0;
+					var saves = parseInt(event.target.saves.value) || 0;
 					var inningsPitched =
 						parseFloat(event.target.inningsPitched.value) || 0;
 					var strikeouts = parseInt(event.target.strikeouts.value) || 0;
@@ -113,22 +130,23 @@
 					var hitsAllowed = parseInt(event.target.hitsAllowed.value) || 0;
 					var homeRunsAllowed =
 						parseInt(event.target.homeRunsAllowed.value) || 0;
-					var wins = parseInt(event.target.wins.value) || 0;
-					var losses = parseInt(event.target.losses.value) || 0;
 
 					// Calculate proration factor
 					var prorateFactor = teamgames > 0 ? prorateGames / teamgames : 0;
 
 					// Calculate prorated counting stats
 					var pGamesPitched = Math.round(gamesPitched * prorateFactor);
+					var pGamesStarted = Math.round(gamesStarted * prorateFactor);
+					var pWins = Math.round(wins * prorateFactor);
+					var pLosses = Math.round(losses * prorateFactor);
+					var pShutouts = Math.round(shutouts * prorateFactor);
+					var pSaves = Math.round(saves * prorateFactor);
 					var pInningsPitched = (inningsPitched * prorateFactor).toFixed(1);
 					var pStrikeouts = Math.round(strikeouts * prorateFactor);
 					var pWalks = Math.round(walks * prorateFactor);
 					var pEarnedRuns = Math.round(earnedRuns * prorateFactor);
 					var pHitsAllowed = Math.round(hitsAllowed * prorateFactor);
 					var pHomeRunsAllowed = Math.round(homeRunsAllowed * prorateFactor);
-					var pWins = Math.round(wins * prorateFactor);
-					var pLosses = Math.round(losses * prorateFactor);
 
 					// Calculate derived stats
 					var ERA =
@@ -169,8 +187,32 @@
 						"<tr><td>Games Pitched</td><td>" +
 						pGamesPitched +
 						"</td></tr>" +
+						"<tr><td>Games Started</td><td>" +
+						pGamesStarted +
+						"</td></tr>" +
+						"<tr><td>Wins</td><td>" +
+						pWins +
+						"</td></tr>" +
+						"<tr><td>Losses</td><td>" +
+						pLosses +
+						"</td></tr>" +
+						"<tr><td>Winning Percentage</td><td>" +
+						winningPercentage.replace("0.", ".") +
+						"</td></tr>" +
+						"<tr><td>Shutouts</td><td>" +
+						pShutouts +
+						"</td></tr>" +
+						"<tr><td>Saves</td><td>" +
+						pSaves +
+						"</td></tr>" +
 						"<tr><td>Innings Pitched</td><td>" +
 						pInningsPitched +
+						"</td></tr>" +
+						"<tr><td>ERA</td><td>" +
+						ERA +
+						"</td></tr>" +
+						"<tr><td>WHIP</td><td>" +
+						WHIP +
 						"</td></tr>" +
 						"<tr><td>Strikeouts</td><td>" +
 						pStrikeouts +
@@ -187,23 +229,8 @@
 						"<tr><td>Home Runs Allowed</td><td>" +
 						pHomeRunsAllowed +
 						"</td></tr>" +
-						"<tr><td>Wins</td><td>" +
-						pWins +
-						"</td></tr>" +
-						"<tr><td>Losses</td><td>" +
-						pLosses +
-						"</td></tr>" +
-						"<tr><td>ERA</td><td>" +
-						ERA +
-						"</td></tr>" +
-						"<tr><td>WHIP</td><td>" +
-						WHIP +
-						"</td></tr>" +
 						"<tr><td>K/BB</td><td>" +
 						KBB +
-						"</td></tr>" +
-						"<tr><td>Winning Percentage</td><td>" +
-						winningPercentage.replace("0.", ".") +
 						"</td></tr>" +
 						"<tr><td>Hits Per 9 IP</td><td>" +
 						hitsPerNine +
