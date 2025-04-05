@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Football Prorater</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0 auto;
+				max-width: 20rem;
+				padding: 1.5rem;
+			}
+			.input-group {
+				margin: 0.5rem 0;
+			}
+			label {
+				display: inline-block;
+				width: 10rem;
+			}
+			table {
+				border-collapse: collapse;
+				margin-top: 1.5rem;
+				width: 100%;
+			}
+			th,
+			td {
+				border: 1px solid #ddd;
+				padding: 0.5rem;
+				text-align: left;
+			}
+			th {
+				background-color: #f2f2f2;
+			}
+			button {
+				background-color: #4caf50;
+				border: none;
+				color: white;
+				cursor: pointer;
+				font-size: 1rem;
+				margin: 0.5rem 0;
+				padding: 0.5rem 1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Football Prorater</h1>
+
+		<form>
+			<div class="input-group">
+				<label>Prorated Games:</label>
+				<input type="number" name="prorateGames" min="1" value="17" />
+			</div>
+			<div class="input-group">
+				<label>Games Played:</label>
+				<input type="number" name="games" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Team Games:</label>
+				<input type="number" name="teamgames" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Pass Attempts:</label>
+				<input type="number" name="passAttempts" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Completions:</label>
+				<input type="number" name="completions" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Passing Yards:</label>
+				<input type="number" name="passingYards" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Passing Touchdowns:</label>
+				<input type="number" name="passingTDs" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Interceptions:</label>
+				<input type="number" name="interceptions" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Rushing Attempts:</label>
+				<input type="number" name="rushingAttempts" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Rushing Yards:</label>
+				<input type="number" name="rushingYards" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Rushing Touchdowns:</label>
+				<input type="number" name="rushingTDs" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Receptions:</label>
+				<input type="number" name="receptions" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Receiving Yards:</label>
+				<input type="number" name="receivingYards" min="0" />
+			</div>
+			<div class="input-group">
+				<label>Receiving Touchdowns:</label>
+				<input type="number" name="receivingTDs" min="0" />
+			</div>
+			<button type="submit">Calculate Stats</button>
+		</form>
+
+		<div id="results"></div>
+
+		<script>
+			document
+				.querySelector("form")
+				.addEventListener("submit", function (event) {
+					event.preventDefault();
+
+					// Get the values from the form
+					var prorateGames = parseInt(event.target.prorateGames.value) || 17;
+					var games = parseInt(event.target.games.value) || 0;
+					var teamgames = parseInt(event.target.teamgames.value) || games;
+					var passingYards = parseInt(event.target.passingYards.value) || 0;
+					var passingTDs = parseInt(event.target.passingTDs.value) || 0;
+					var interceptions = parseInt(event.target.interceptions.value) || 0;
+					var rushingYards = parseInt(event.target.rushingYards.value) || 0;
+					var rushingTDs = parseInt(event.target.rushingTDs.value) || 0;
+					var receivingYards = parseInt(event.target.receivingYards.value) || 0;
+					var receivingTDs = parseInt(event.target.receivingTDs.value) || 0;
+					var receptions = parseInt(event.target.receptions.value) || 0;
+					var passAttempts = parseInt(event.target.passAttempts.value) || 0;
+					var completions = parseInt(event.target.completions.value) || 0;
+					var rushingAttempts =
+						parseInt(event.target.rushingAttempts.value) || 0;
+
+					// Calculate proration factor
+					var prorateFactor = teamgames > 0 ? prorateGames / teamgames : 0;
+
+					// Calculate prorated stats
+					var pPassingYards = Math.round(passingYards * prorateFactor);
+					var pPassingTDs = Math.round(passingTDs * prorateFactor);
+					var pInterceptions = Math.round(interceptions * prorateFactor);
+					var pRushingYards = Math.round(rushingYards * prorateFactor);
+					var pRushingTDs = Math.round(rushingTDs * prorateFactor);
+					var pReceivingYards = Math.round(receivingYards * prorateFactor);
+					var pReceivingTDs = Math.round(receivingTDs * prorateFactor);
+					var pReceptions = Math.round(receptions * prorateFactor);
+					var pPassAttempts = Math.round(passAttempts * prorateFactor);
+					var pCompletions = Math.round(completions * prorateFactor);
+					var pRushingAttempts = Math.round(rushingAttempts * prorateFactor);
+
+					// Calculate derived stats
+					var completionPercentage =
+						passAttempts > 0
+							? ((completions / passAttempts) * 100).toFixed(2)
+							: "0.00";
+					var yardsPerRush =
+						rushingAttempts > 0
+							? (rushingYards / rushingAttempts).toFixed(2)
+							: "0.00";
+					var yardsPerReception =
+						receptions > 0 ? (receivingYards / receptions).toFixed(2) : "0.00";
+					var passingYardsPerGame =
+						games > 0 ? (passingYards / games).toFixed(2) : "0.00";
+					var rushingYardsPerGame =
+						games > 0 ? (rushingYards / games).toFixed(2) : "0.00";
+					var receivingYardsPerGame =
+						games > 0 ? (receivingYards / games).toFixed(2) : "0.00";
+
+					// Correct QB Rating Calculation
+					var a = passAttempts > 0 ? (completions / passAttempts - 0.3) * 5 : 0;
+					var b =
+						passAttempts > 0 ? (passingYards / passAttempts - 3) * 0.25 : 0;
+					var c = passAttempts > 0 ? (passingTDs / passAttempts) * 20 : 0;
+					var d =
+						passAttempts > 0 ? 2.375 - (interceptions / passAttempts) * 25 : 0;
+
+					// Adjust values to be within range [0, 2.375]
+					a = Math.max(0, Math.min(2.375, a));
+					b = Math.max(0, Math.min(2.375, b));
+					c = Math.max(0, Math.min(2.375, c));
+					d = Math.max(0, Math.min(2.375, d));
+
+					// Final QB Rating Formula
+					var qbRating =
+						passAttempts > 0
+							? (((a + b + c + d) / 6) * 100).toFixed(2)
+							: "0.00";
+
+					// Create results table
+					document.querySelector("#results").innerHTML =
+						"<h2>Prorated Stats (" +
+						prorateGames +
+						" games)</h2>" +
+						"<table>" +
+						"<tr><th>Statistic</th><th>Value</th></tr>" +
+						"<tr><td>Pass Attempts</td><td>" +
+						pPassAttempts +
+						"</td></tr>" +
+						"<tr><td>Completions</td><td>" +
+						pCompletions +
+						"</td></tr>" +
+						"<tr><td>Completion Percentage</td><td>" +
+						completionPercentage +
+						"%</td></tr>" +
+						"<tr><td>Passing Yards</td><td>" +
+						pPassingYards +
+						"</td></tr>" +
+						"<tr><td>Passing Yards Per Game</td><td>" +
+						passingYardsPerGame +
+						"</td></tr>" +
+						"<tr><td>Passing Touchdowns</td><td>" +
+						pPassingTDs +
+						"</td></tr>" +
+						"<tr><td>Interceptions</td><td>" +
+						pInterceptions +
+						"</td></tr>" +
+						"<tr><td>QB Rating</td><td>" +
+						qbRating +
+						"</td></tr>" +
+						"<tr><td>Rushing Attempts</td><td>" +
+						pRushingAttempts +
+						"</td></tr>" +
+						"<tr><td>Rushing Yards</td><td>" +
+						pRushingYards +
+						"</td></tr>" +
+						"<tr><td>Rushing Yards Per Game</td><td>" +
+						rushingYardsPerGame +
+						"</td></tr>" +
+						"<tr><td>Yards Per Rush</td><td>" +
+						yardsPerRush +
+						"</td></tr>" +
+						"<tr><td>Rushing Touchdowns</td><td>" +
+						pRushingTDs +
+						"</td></tr>" +
+						"<tr><td>Receptions</td><td>" +
+						pReceptions +
+						"</td></tr>" +
+						"<tr><td>Receiving Yards</td><td>" +
+						pReceivingYards +
+						"</td></tr>" +
+						"<tr><td>Receiving Yards Per Game</td><td>" +
+						receivingYardsPerGame +
+						"</td></tr>" +
+						"<tr><td>Yards Per Reception</td><td>" +
+						yardsPerReception +
+						"</td></tr>" +
+						"<tr><td>Receiving Touchdowns</td><td>" +
+						pReceivingTDs +
+						"</td></tr>" +
+						"</table>";
+				});
+		</script>
+	</body>
+</html>
