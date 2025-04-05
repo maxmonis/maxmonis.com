@@ -191,12 +191,12 @@
 					<input type="number" name="earnedRuns" min="0" />
 				</div>
 				<div class="input-group">
-					<label>Hits Allowed:</label>
-					<input type="number" name="hitsAllowed" min="0" />
+					<label>Hits:</label>
+					<input type="number" name="hits" min="0" />
 				</div>
 				<div class="input-group">
-					<label>Home Runs Allowed:</label>
-					<input type="number" name="homeRunsAllowed" min="0" />
+					<label>Home Runs:</label>
+					<input type="number" name="homeRuns" min="0" />
 				</div>
 				<button type="submit">Calculate Stats</button>
 			</form>
@@ -372,9 +372,8 @@
 					var strikeouts = parseInt(event.target.strikeouts.value) || 0;
 					var walks = parseInt(event.target.walks.value) || 0;
 					var earnedRuns = parseInt(event.target.earnedRuns.value) || 0;
-					var hitsAllowed = parseInt(event.target.hitsAllowed.value) || 0;
-					var homeRunsAllowed =
-						parseInt(event.target.homeRunsAllowed.value) || 0;
+					var hits = parseInt(event.target.hits.value) || 0;
+					var homeRuns = parseInt(event.target.homeRuns.value) || 0;
 
 					// Calculate proration factor
 					var prorateFactor = teamgames > 0 ? prorateGames / teamgames : 0;
@@ -390,8 +389,8 @@
 					var pStrikeouts = Math.round(strikeouts * prorateFactor);
 					var pWalks = Math.round(walks * prorateFactor);
 					var pEarnedRuns = Math.round(earnedRuns * prorateFactor);
-					var pHitsAllowed = Math.round(hitsAllowed * prorateFactor);
-					var pHomeRunsAllowed = Math.round(homeRunsAllowed * prorateFactor);
+					var pHits = Math.round(hits * prorateFactor);
+					var pHomeRuns = Math.round(homeRuns * prorateFactor);
 
 					// Calculate derived stats
 					var ERA =
@@ -400,14 +399,14 @@
 							: "0.00";
 					var WHIP =
 						inningsPitched > 0
-							? ((walks + hitsAllowed) / inningsPitched).toFixed(3)
+							? ((walks + hits) / inningsPitched).toFixed(3)
 							: "0.000";
 					var KBB = walks > 0 ? (strikeouts / walks).toFixed(2) : "0.00";
 					var winningPercentage =
 						pWins > 0 ? (pWins / (pWins + pLosses)).toFixed(3) : "0.00";
 					var hitsPerNine =
 						inningsPitched > 0
-							? ((hitsAllowed / inningsPitched) * 9).toFixed(2)
+							? ((hits / inningsPitched) * 9).toFixed(2)
 							: "0.00";
 					var walksPerNine =
 						inningsPitched > 0
@@ -415,7 +414,7 @@
 							: "0.00";
 					var homeRunsPerNine =
 						inningsPitched > 0
-							? ((homeRunsAllowed / inningsPitched) * 9).toFixed(2)
+							? ((homeRuns / inningsPitched) * 9).toFixed(2)
 							: "0.00";
 					var strikeoutPerNine =
 						inningsPitched > 0
@@ -469,10 +468,10 @@
 						pEarnedRuns +
 						"</td></tr>" +
 						"<tr><td>Hits Allowed</td><td>" +
-						pHitsAllowed +
+						pHits +
 						"</td></tr>" +
 						"<tr><td>Home Runs Allowed</td><td>" +
-						pHomeRunsAllowed +
+						pHomeRuns +
 						"</td></tr>" +
 						"<tr><td>K/BB</td><td>" +
 						KBB +
