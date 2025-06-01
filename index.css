@@ -94,18 +94,10 @@
   width: 100%;
 }
 
-.portfolio-description {
-  max-width: 70ch;
-}
-
-.portfolio-description a {
-  white-space: nowrap;
-}
-
 .portfolio-site-list {
   display: flex;
   flex-direction: column;
-  margin-block: 5rem;
+  margin-block-end: 5rem;
   max-width: 70ch;
   gap: 5rem;
   width: 100%;
