@@ -157,17 +157,20 @@ export function useBroadcast(
   key: string,
   handler?: (event: MessageEvent) => void
 ) {
+  const ref = React.useRef(new BroadcastChannel(key))
+
   React.useEffect(() => {
     if (!handler) return
-    const broadcastChannel = new BroadcastChannel(key)
-    broadcastChannel.addEventListener("message", handler)
+
+    ref.current.addEventListener("message", handler)
+
     return () => {
-      broadcastChannel.removeEventListener("message", handler)
+      ref.current.removeEventListener("message", handler)
     }
   }, [handler, key])
 
   return (data: MessageEvent["data"]) => {
-    new BroadcastChannel(key).postMessage(data)
+    ref.current.postMessage(data)
   }
 }
 						</pre
@@ -231,10 +234,10 @@ export function useBroadcast<
   key: K,
   handler?: (event: MessageEvent<&zwj;T>) => void
 ) {
-  // same useEffect as above
+  // same ref and useEffect as above
 
   return (data: T) => {
-    new BroadcastChannel(key).postMessage(data)
+    ref.current.postMessage(data)
   }
 }
 						</pre
@@ -334,6 +337,11 @@ export function ClearCartButton() {
 							<code>window.BroadcastChannel</code> can be used in any JavaScript
 							app, you'll just need to tweak my implementation a bit. Thanks for
 							reading!
+						</p>
+						<p class="blog-post-paragraph">
+							<strong>July 3, 2025 Update:</strong>
+							<br />
+							Use a ref for the broadcast channel to avoid double instantiation.
 						</p>
 					</div>
 					<div class="blog-post-footer">

@@ -33,6 +33,10 @@ p {
   text-wrap: pretty;
 }
 
+strong {
+  font-weight: 700;
+}
+
 ul {
   list-style: none;
 }
