@@ -33,6 +33,11 @@ p {
   text-wrap: pretty;
 }
 
+pre {
+  font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+}
+
 strong {
   font-weight: 700;
 }
