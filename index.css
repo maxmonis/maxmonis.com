@@ -1,231 +1,232 @@
 @import "./styles/global.css";
 
 @keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
+	0% {
+		opacity: 0;
+	}
 
-  20% {
-    opacity: 0;
-  }
+	20% {
+		opacity: 0;
+	}
 
-  100% {
-    opacity: 1;
-  }
+	100% {
+		opacity: 1;
+	}
 }
 
 .hero-image {
-  background-image:
-    linear-gradient(to top,
-      rgba(34, 49, 63, 0.6),
-      rgba(34, 49, 63, 0.6)),
-    url(./assets/portfolio/mad-max.jpeg);
-  background-position: 30%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: calc(100vh - var(--header-height));
-  margin-inline-start: -1.5rem;
-  max-width: 100vw;
-  min-width: 100vw;
-  position: relative;
-  z-index: -1;
+	background-image: linear-gradient(
+			to top,
+			rgba(34, 49, 63, 0.6),
+			rgba(34, 49, 63, 0.6)
+		),
+		url(./assets/portfolio/mad-max.jpeg);
+	background-position: 30%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: calc(100vh - var(--header-height));
+	margin-inline-start: -1.5rem;
+	max-width: 100vw;
+	min-width: 100vw;
+	position: relative;
+	z-index: -1;
 }
 
 @media not (prefers-reduced-motion: reduce) {
-  .hero-image {
-    animation: fade-in 2s;
-  }
+	.hero-image {
+		animation: fade-in 2s;
+	}
 }
 
 .hero-image.hide,
 .hero-image.hide .hero-image-text {
-  height: 0;
-  transition: height 1s ease-in-out;
+	height: 0;
+	transition: height 1s ease-in-out;
 }
 
 .hero-image.hide h1,
 .hero-image.hide h2 {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
 }
 
 .hero-image-text {
-  align-items: center;
-  color: var(--light-color);
-  display: flex;
-  flex-direction: column;
-  height: calc(100dvh - var(--header-height));
-  justify-content: space-between;
-  position: relative;
-  text-align: center;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+	align-items: center;
+	color: var(--light-color);
+	display: flex;
+	flex-direction: column;
+	height: calc(100dvh - var(--header-height));
+	justify-content: space-between;
+	position: relative;
+	text-align: center;
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .hero-image h1 {
-  font-size: var(--text-xxl);
-  margin-block-start: clamp(2rem, 20%, 10vh);
+	font-size: var(--text-xxl);
+	margin-block-start: clamp(2rem, 20%, 10vh);
 }
 
 .hero-image h2 {
-  font-size: var(--text-xl);
-  margin-block-end: clamp(2rem, 20%, 10vh);
+	font-size: var(--text-xl);
+	margin-block-end: clamp(2rem, 20%, 10vh);
 }
 
 .portfolio {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
 }
 
 .portfolio-title {
-  font-size: var(--text-xxl);
-  margin-block: 2rem;
+	font-size: var(--text-xxl);
+	margin-block: 2rem;
 }
 
 .portfolio-video {
-  max-width: 70ch;
-  width: 100%;
+	max-width: 70ch;
+	width: 100%;
 }
 
 .portfolio-video iframe {
-  aspect-ratio: 16 / 9;
-  display: block;
-  height: auto;
-  width: 100%;
+	aspect-ratio: 16 / 9;
+	display: block;
+	height: auto;
+	width: 100%;
 }
 
 .portfolio-site-list {
-  display: flex;
-  flex-direction: column;
-  margin-block-end: 5rem;
-  max-width: 70ch;
-  gap: 5rem;
-  width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-block-end: 5rem;
+	max-width: 70ch;
+	gap: 5rem;
+	width: 100%;
 }
 
 .portfolio-site {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 }
 
 .portfolio-site-title {
-  font-size: var(--text-lg);
-  margin-block-end: 1rem;
+	font-size: var(--text-lg);
+	margin-block-end: 1rem;
 }
 
 .portfolio-site-image,
 .previous-project-image {
-  box-shadow: var(--box-shadow);
-  border: var(--border);
-  width: 100%;
+	box-shadow: var(--box-shadow);
+	border: var(--border);
+	width: 100%;
 }
 
 .portfolio-site-description {
-  margin-block: 1.25rem 1rem;
+	margin-block: 1.25rem 1rem;
 }
 
 .portfolio-site-description a {
-  white-space: nowrap;
+	white-space: nowrap;
 }
 
 .additional-repos,
 .previous-projects {
-  display: flex;
-  flex-direction: column;
-  margin-block-end: 5rem;
-  max-width: 70ch;
-  width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-block-end: 5rem;
+	max-width: 70ch;
+	width: 100%;
 }
 
 .additional-repos-title,
 .previous-projects-title {
-  font-size: var(--text-lg);
-  margin-block-end: 2rem;
-  text-align: center;
+	font-size: var(--text-lg);
+	margin-block-end: 2rem;
+	text-align: center;
 }
 
 .additional-repo-list,
 .previous-project-list {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .additional-repo-list {
-  gap: 1.5rem;
+	gap: 1.5rem;
 }
 
 .previous-project-list {
-  gap: 3.5rem;
+	gap: 3.5rem;
 }
 
 .previous-project {
-  margin-inline: auto;
-  max-width: 28rem;
+	margin-inline: auto;
+	max-width: 28rem;
 }
 
 .previous-project-image {
-  margin-block-end: 1rem;
-  margin-inline: auto;
-  max-width: 28rem;
+	margin-block-end: 1rem;
+	margin-inline: auto;
+	max-width: 28rem;
 }
 
 @media (min-width: 700px) {
-  .previous-project {
-    max-width: unset;
-  }
+	.previous-project {
+		max-width: unset;
+	}
 
-  .previous-project-image {
-    float: left;
-    margin-inline-end: 1.5rem;
-  }
+	.previous-project-image {
+		float: left;
+		margin-inline-end: 1.5rem;
+	}
 }
 
 .previous-project-link {
-  margin-block-start: 0.5rem;
+	margin-block-start: 0.5rem;
 }
 
 .additional-repo a,
 .previous-project a {
-  white-space: nowrap;
+	white-space: nowrap;
 }
 
 .about-me-title {
-  font-size: var(--text-xxl);
-  margin-block-end: 2rem;
-  text-align: center;
+	font-size: var(--text-xxl);
+	margin-block-end: 2rem;
+	text-align: center;
 }
 
 .about-me-image {
-  border-radius: 1rem;
-  max-width: 15rem;
+	border-radius: 1rem;
+	max-width: 15rem;
 }
 
 .about-me-image-caption {
-  margin-block-start: 0.75rem;
+	margin-block-start: 0.75rem;
 }
 
 .about-me-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  text-align: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+	justify-content: center;
+	text-align: center;
 }
 
 .about-me-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  max-width: 50ch;
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	max-width: 50ch;
 }
 
 .about-me-subtitle {
-  font-size: 1.5rem;
-  margin-block-end: 0.25rem;
-  text-align: center;
+	font-size: 1.5rem;
+	margin-block-end: 0.25rem;
+	text-align: center;
 }
 
 .about-me-subtitle:not(:first-of-type) {
-  margin-block-start: 0.75rem;
+	margin-block-start: 0.75rem;
 }
