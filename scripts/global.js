@@ -43,3 +43,16 @@ var observer = new IntersectionObserver(function (entries) {
 });
 var sections = document.querySelectorAll(".slide-in");
 for (var i = 0; i < sections.length; i++) observer.observe(sections[i]);
+
+var oldScrollY = window.scrollY;
+window.addEventListener(
+	"scroll",
+	function () {
+		var newScrollY = window.scrollY;
+		var down = newScrollY > oldScrollY;
+		if (down) checkbox.checked = false;
+		document.querySelector(".page-header").classList.toggle("hidden", down);
+		oldScrollY = newScrollY;
+	},
+	{ passive: true }
+);
