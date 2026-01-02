@@ -49,9 +49,9 @@ window.addEventListener(
 	"scroll",
 	function () {
 		var newScrollY = window.scrollY;
-		var down = newScrollY > oldScrollY;
-		if (down) checkbox.checked = false;
-		document.querySelector(".page-header").classList.toggle("hidden", down);
+		var hidden = newScrollY > 10 && newScrollY > oldScrollY;
+		if (hidden) checkbox.checked = false;
+		document.querySelector(".page-header").classList.toggle("hidden", hidden);
 		oldScrollY = newScrollY;
 	},
 	{ passive: true }
