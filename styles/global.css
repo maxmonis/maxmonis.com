@@ -102,14 +102,14 @@ body.dark {
 
 body.dark .site-logo img,
 body.dark .nav-menu a img,
-body.dark .card-actions a img {
+body.dark .project-links a img {
 	filter: invert(1);
 }
 
 @media (prefers-color-scheme: dark) {
 	body.noscript .site-logo img,
 	body.noscript .nav-menu a img,
-	body.dark .card-actions a img {
+	body.dark .project-links a img {
 		filter: invert(1);
 	}
 }

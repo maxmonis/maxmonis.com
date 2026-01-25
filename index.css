@@ -102,11 +102,11 @@ header {
 }
 
 header h1 {
-	font-size: 3rem;
-	font-weight: 800;
-	margin-bottom: 1rem;
-	line-height: 1.1;
 	color: var(--fg1);
+	font-size: var(--text-xl);
+	font-weight: 800;
+	line-height: 1.1;
+	margin-bottom: 1rem;
 }
 
 header h1 span {
@@ -114,108 +114,108 @@ header h1 span {
 }
 
 header p {
-	font-size: 1.25rem;
 	color: var(--fg2);
+	font-size: 1.25rem;
 	margin-bottom: 2rem;
+	line-height: 1.4;
 }
 
 .hero-image {
-	flex: 1;
 	display: flex;
+	flex: 1;
 	justify-content: center;
 }
 
 .hero-image img {
-	width: 20rem;
-	height: auto;
 	aspect-ratio: 1/1;
-	object-fit: cover;
 	border-radius: 50%;
 	border: 4px solid white;
 	box-shadow: 0 1.25rem 1.5rem -0.25rem color-mix(in oklab, var(--fg1) 20%, transparent);
+	height: auto;
+	object-fit: cover;
+	width: 20rem;
 }
 
-.projects-section {
+.projects {
 	padding-block: 2rem;
 }
 
-.section-title {
+.projects h2 {
+	color: var(--fg2);
 	font-size: 1.5rem;
 	font-weight: 700;
+	letter-spacing: 0.05em;
 	margin-bottom: 2rem;
 	text-transform: uppercase;
-	letter-spacing: 0.05em;
-	color: var(--fg2);
 }
 
 .projects-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
 	gap: 1.5rem;
+	grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
 }
 
-/* --- PROJECT CARD --- */
-.project-card {
+.project {
 	background-color: var(--bg2);
-	border: 1px solid color-mix(in oklab, var(--fg1) 25%, transparent);
 	border-radius: 12px;
-	overflow: hidden;
-	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	border: 1px solid color-mix(in oklab, var(--fg1) 25%, transparent);
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.project-card:hover {
-	transform: translateY(-4px);
+.project:hover {
 	box-shadow: 0 0.5rem 0.75rem 0
 		color-mix(in oklab, var(--fg1) 25%, transparent);
+	transform: translateY(-0.25rem);
 }
 
-.card-image {
-	width: 100%;
+.project-image {
+	align-items: center;
 	aspect-ratio: 16 / 9;
 	background-color: #e5e7eb;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	color: #9ca3af;
+	display: flex;
+	justify-content: center;
 	overflow: hidden;
+	width: 100%;
 }
 
-.card-image img {
-	width: 100%;
+.project-image img {
 	height: 100%;
 	object-fit: cover;
+	width: 100%;
 }
 
-.card-content {
-	padding: 1.5rem;
+.project-content {
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
+	padding: 1.5rem;
 }
 
-.card-title {
+.project-content h3 {
 	font-size: 1.25rem;
 	font-weight: 700;
 	margin-bottom: 0.5rem;
 }
 
-.card-desc {
-	font-size: 0.95rem;
+.project-content p {
 	color: var(--fg2);
-	margin-bottom: 1rem;
 	flex-grow: 1;
+	font-size: 0.95rem;
+	margin-bottom: 1rem;
 }
 
-.tech-stack {
+.project-tags {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.5rem;
 	margin-bottom: 1.5rem;
 }
 
-.tech-tag {
+.project-tags span {
 	background-color: color-mix(in oklab, var(--fg1) 10%, transparent);
 	color: color-mix(in oklab, var(--fg1) 90%, transparent);
 	font-size: 0.75rem;
@@ -224,12 +224,12 @@ header p {
 	border-radius: 4px;
 }
 
-.card-actions {
+.project-links {
 	display: flex;
 	gap: 1rem;
 }
 
-.card-actions img {
+.project-links img {
 	aspect-ratio: 1/1;
 	margin-inline-end: 0.5rem;
 	width: 1.25rem;
@@ -266,18 +266,12 @@ header p {
 	background-color: color-mix(in oklab, var(--fg1) 5%, transparent);
 }
 
-.icon {
-	width: 18px;
-	height: 18px;
-	margin-right: 6px;
-}
-
 @media not all and (min-width: 700px) {
 	header {
 		flex-direction: column-reverse;
-		text-align: center;
-		padding: 4rem 0;
 		gap: 2rem;
+		padding: 4rem 0;
+		text-align: center;
 	}
 
 	.hero-text {
@@ -286,9 +280,5 @@ header p {
 
 	.hero-links {
 		flex-direction: column;
-	}
-
-	header h1 {
-		font-size: 2.25rem;
 	}
 }
