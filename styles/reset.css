@@ -42,6 +42,10 @@ strong {
 	font-weight: 700;
 }
 
+small {
+	font-size: 85%;
+}
+
 ul {
 	list-style: none;
 }

@@ -133,8 +133,9 @@
 
 @media (min-width: 700px) {
 	.blog-preview-link {
+		background-color: var(--bg2);
 		border-radius: 1rem;
-		box-shadow: var(--box-shadow);
+		border: 1px solid color-mix(in oklab, var(--fg1) 25%, transparent);
 		flex-direction: row;
 		gap: 1.5rem;
 		padding-inline: 1.5rem;

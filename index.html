@@ -72,7 +72,7 @@
 	<body class="noscript">
 		<div class="page">
 			<div class="page-wrapper">
-				<header class="page-header">
+				<nav class="page-nav">
 					<a aria-current="page" class="site-logo" href="">
 						<img
 							alt="logo of Max Monis's personal website, featuring stylized initials 'MM' in black and white"
@@ -80,7 +80,7 @@
 						/>
 						Max Monis
 					</a>
-					<nav class="page-nav" role="navigation">
+					<div class="nav-menu" role="navigation">
 						<input
 							aria-label="toggle menu visibility"
 							id="menu-toggle"
@@ -91,7 +91,7 @@
 						<span></span>
 						<span></span>
 						<ul>
-							<li><a aria-current="page" href="">Portfolio</a></li>
+							<li><a aria-current="page" href="#portfolio">Portfolio</a></li>
 							<li><a href="./blog/">Blog</a></li>
 							<li><a href="./resume.pdf" target="_blank">Resume</a></li>
 							<li>
@@ -121,323 +121,256 @@
 								/></a>
 							</li>
 						</ul>
-					</nav>
-				</header>
-				<main class="page-content">
+					</div>
+				</nav>
+				<div class="page-content">
 					<div
 						alt="Tom Hardy as Max Rockatansky in the feature film Mad Max: Fury Road"
-						class="hero-image"
+						class="mad-max-image"
+						role="presentation"
 					>
-						<div class="hero-image-text">
-							<h1>My name is Max</h1>
-							<h2>My world is code</h2>
+						<div class="mad-max-image-text">
+							<span>My name is Max</span>
+							<span>My world is software</span>
 						</div>
 					</div>
-					<div class="portfolio">
-						<h3 class="portfolio-title">Portfolio</h3>
-						<div>
-							<ul class="portfolio-site-list">
-								<li class="portfolio-site slide-in">
-									<h4 class="portfolio-site-title">
-										<a href="https://goatvote.ca" rel="noopener" target="_blank"
-											>Goat Vote</a
-										>
-									</h4>
+
+					<header>
+						<div class="hero-text">
+							<h1>
+								I build <span>scalable solutions</span> powered by
+								<span>clean code</span>
+							</h1>
+							<p>
+								My passion is creating intuitive and delightful applications.
+								Professional experience in SaaS, eCommerce, and Fintech.
+								TypeScript and React specialist.
+							</p>
+							<div class="hero-links">
+								<a href="#portfolio" class="cta cta-primary">View My Work</a>
+								<a href="/blog" class="cta cta-outline">Read My Blog</a>
+							</div>
+						</div>
+						<div class="hero-image">
+							<img alt="Max Portrait" src="/assets/portfolio/max.jpeg" />
+						</div>
+					</header>
+
+					<main class="projects-section" id="portfolio">
+						<h2 class="section-title">Featured Projects</h2>
+
+						<div class="projects-grid">
+							<article class="project-card">
+								<div class="card-image">
 									<img
-										alt="screenshot of goatvote.ca"
-										class="portfolio-site-image"
-										height="398"
-										loading="lazy"
-										src="./assets/portfolio/goatvote.ca.png"
-										width="705"
+										src="/assets/portfolio/goatvote.ca.png"
+										alt="Goat Vote App"
 									/>
-									<p class="portfolio-site-description">
-										This MERN (MongoDB, Express, React, Node) app allows users
-										to vote on which athletes are the best of all time and of
-										the current season. Uses TypeScript, Vite, Tailwind,
-										TanStack Query, TanStack Router, the Wikimedia API, AWS S3,
-										Redis, ws, and Mongoose. The repo is private but I'll invite
-										you if you
-										<a href="mailto:themaxmonis@gmail.com">email me</a>
-										to request access.
-									</p>
-								</li>
-								<li class="portfolio-site slide-in">
-									<h4 class="portfolio-site-title">
+								</div>
+								<div class="card-content">
+									<h3 class="card-title">Goat Vote</h3>
+									<p class="card-desc">Social media site (private repo)</p>
+									<div class="tech-stack">
+										<span class="tech-tag">MERN</span>
+										<span class="tech-tag">TanStack</span>
+										<span class="tech-tag">Redis</span>
+										<span class="tech-tag">AWS S3</span>
+									</div>
+									<div class="card-actions">
 										<a
+											class="cta cta-primary"
+											href="https://goatvote.ca"
+											rel="noopener"
+											target="_blank"
+											>Visit Website</a
+										>
+									</div>
+								</div>
+							</article>
+
+							<article class="project-card">
+								<div class="card-image">
+									<img
+										src="/assets/portfolio/app.maxmonis.com.png"
+										alt="maxWellness App"
+									/>
+								</div>
+								<div class="card-content">
+									<h3 class="card-title">maxWellness</h3>
+									<p class="card-desc">Workout tracker</p>
+									<div class="tech-stack">
+										<span class="tech-tag">Next</span>
+										<span class="tech-tag">Firebase</span>
+										<span class="tech-tag">shadcn/ui</span>
+									</div>
+									<div class="card-actions">
+										<a
+											class="cta cta-primary"
 											href="https://app.maxmonis.com"
 											rel="noopener"
 											target="_blank"
-											>maxWellness</a
+											>Visit Website</a
 										>
-									</h4>
-									<div class="portfolio-video">
-										<iframe
-											allowfullscreen
-											aria-label="video demonstrating app.maxmonis.com"
-											frameborder="0"
-											src="https://www.youtube.com/embed/QipvfsK5Tmg"
-											title="app.maxmonis.com demo video"
-										></iframe>
-									</div>
-									<p class="portfolio-site-description">
-										The stack of this workout tracking progressive web app
-										includes the Next Pages Router, TypeScript, Tailwind with
-										shadcn, Vitest, React Query, and Firebase. You can log into
-										the demo account using the email m@m.com with the password
-										123123.
-									</p>
-									<div>
 										<a
-											class="portfolio-site-link"
+											class="cta cta-outline"
 											href="https://github.com/maxmonis/maxWellness"
 											rel="noopener"
 											target="_blank"
-											>View code on GitHub</a
+											><img
+												alt="GitHub logo"
+												src="./assets/logos/github.svg"
+											/>View Code</a
 										>
 									</div>
-								</li>
-								<li class="portfolio-site slide-in">
-									<h4 class="portfolio-site-title">
-										<a href="https://venzle.ca" rel="noopener" target="_blank"
-											>Venzle</a
-										>
-									</h4>
-									<img
-										alt="screenshot of venzle.ca"
-										class="portfolio-site-image"
-										height="398"
-										loading="lazy"
-										src="./assets/portfolio/venzle.ca.png"
-										width="705"
-									/>
-									<p class="portfolio-site-description">
-										This daily puzzle game uses TypeScript and Vite. Its only
-										production dependency is
+								</div>
+							</article>
+
+							<article class="project-card">
+								<div class="card-image">
+									<img src="/assets/portfolio/venzle.ca.png" alt="Venzle App" />
+								</div>
+								<div class="card-content">
+									<h3 class="card-title">Venzle</h3>
+									<p class="card-desc">Daily puzzle game</p>
+									<div class="tech-stack">
+										<span class="tech-tag">TypeScript</span>
+										<span class="tech-tag">Vite</span>
+									</div>
+									<div class="card-actions">
 										<a
-											href="https://www.npmjs.com/package/htm-elements"
+											class="cta cta-primary"
+											href="https://venzle.ca"
 											rel="noopener"
 											target="_blank"
-											>HTM Elements</a
-										>, a library I created myself whose
-										<a
-											href="https://github.com/maxmonis/htm-elements"
-											rel="noopener"
-											target="_blank"
-											>source code</a
+											>Visit Website</a
 										>
-										is also public.
-									</p>
-									<div>
 										<a
-											class="portfolio-site-link"
+											class="cta cta-outline"
 											href="https://github.com/maxmonis/venzle.ca"
 											rel="noopener"
 											target="_blank"
-											>View code on GitHub</a
+											><img
+												alt="GitHub logo"
+												src="./assets/logos/github.svg"
+											/>View Code</a
 										>
 									</div>
-								</li>
-							</ul>
-							<div class="previous-projects slide-in">
-								<h3 class="previous-projects-title">Previous Projects</h3>
-								<ul class="previous-project-list">
-									<li class="previous-project">
-										<img
-											alt="screenshot of margaretmonis.com"
-											class="previous-project-image"
-											height="254"
-											loading="lazy"
-											src="./assets/portfolio/margaretmonis.com.png"
-											width="450"
-										/>
-										<p class="previous-project-description">
-											<a
-												href="https://margaretmonis.com"
-												rel="noopener"
-												target="_blank"
-												>margaretmonis.com</a
-											>
-											is my mom's blog, which I created for her using the Next
-											15 App Router, React 19, TypeScript, Tailwind, GraphQL,
-											DatoCMS, and Firebase.
-										</p>
-										<div class="previous-project-link">
-											<a
-												href="https://github.com/maxmonis/margaretmonis.com"
-												rel="noopener"
-												target="_blank"
-												>View code on GitHub</a
-											>
-										</div>
-									</li>
-									<li class="previous-project">
-										<img
-											alt="screenshot of alcalandrea.com"
-											class="previous-project-image"
-											height="254"
-											loading="lazy"
-											src="./assets/portfolio/alcalandrea.com.png"
-											width="450"
-										/>
-										<p class="previous-project-description">
-											<a
-												href="https://alcalandrea.com"
-												rel="noopener"
-												target="_blank"
-												>alcalandrea.com</a
-											>
-											is my girlfriend's portfolio, which she designed and I
-											built using Next, TypeScript, and Tailwind.
-										</p>
-										<div class="previous-project-link">
-											<a
-												href="https://github.com/alcalandrea/alcalandrea.com"
-												rel="noopener"
-												target="_blank"
-												>View code on GitHub</a
-											>
-										</div>
-									</li>
-									<li class="previous-project">
-										<img
-											alt="screenshot of bomb.maxmonis.com"
-											class="previous-project-image"
-											height="254"
-											loading="lazy"
-											src="./assets/portfolio/bomb.maxmonis.com.png"
-											width="450"
-										/>
-										<p class="previous-project-description">
-											<a
-												href="https://bomb.maxmonis.com"
-												rel="noopener"
-												target="_blank"
-												>BOMB</a
-											>
-											is a websocket-based multiplayer game I made using
-											TypeScript, Vite, HTM Elements, Express, and ws.
-										</p>
-										<div class="previous-project-link">
-											<a
-												href="https://github.com/maxmonis/BOMB"
-												rel="noopener"
-												target="_blank"
-												>View code on GitHub</a
-											>
-										</div>
-									</li>
-								</ul>
-							</div>
-							<div class="additional-repos slide-in">
-								<h3 class="additional-repos-title">Additional Repos</h3>
-								<div class="additional-repo-list">
-									<p>
-										I built
-										<a
-											href="https://github.com/maxmonis/Todo"
-											rel="noopener"
-											target="_blank"
-											>Todo</a
-										>
-										to try out TanStack Start and have achieved 100% test
-										coverage using Vitest and Testing Library.
-										<a
-											href="https://github.com/maxmonis/AuthApp"
-											rel="noopener"
-											target="_blank"
-											>AuthApp</a
-										>
-										is an Express server with a React frontend which has 100%
-										test coverage using Jest and Testing Library, with Mock
-										Service Worker for HTTP mocking. I also recreated the
-										application with Angular, and then again using Vite Vanilla
-										TypeScript.
-									</p>
-									<p>
-										Building
-										<a
-											href="https://github.com/maxmonis/maxWellness-v1"
-											rel="noopener"
-											target="_blank"
-											>maxWellness-v1</a
-										>
-										was the main way I taught myself to code before turning pro,
-										and there have probably been about ten iterations.
-										<a
-											href="https://github.com/maxmonis/CodeRepo"
-											rel="noopener"
-											target="_blank"
-											>CodeRepo</a
-										>
-										is a social media site for programming challenges and its
-										stack includes Next, Firebase, and Emotion. It's my oldest
-										app which is still hosted, and can be viewed at
-										<a
-											href="https://code.maxmonis.com"
-											rel="noopener"
-											target="_blank"
-											>code.maxmonis.com</a
-										>.
-									</p>
-									<p>
-										The website you're viewing right now uses only HTML, CSS,
-										and JavaScript.
-										<a
-											href="https://github.com/maxmonis/maxmonis.com"
-											rel="noopener"
-											target="_blank"
-											>Its repo</a
-										>
-										is open source, as is that of the original
-										<a
-											href="https://github.com/maxmonis/maxmonis.com-v1"
-											rel="noopener"
-											target="_blank"
-											>Gatsby version</a
-										>.
-									</p>
 								</div>
-							</div>
-							<div class="about-me">
-								<h3 class="about-me-title slide-in">About Me</h3>
-								<div class="about-me-content">
-									<figure class="about-me-image-container slide-in">
-										<img
-											alt="Max Monis"
-											class="about-me-image"
-											height="360"
-											loading="lazy"
-											src="./assets/portfolio/max.jpeg"
-											width="240"
-										/>
-										<figcaption class="about-me-image-caption">
-											Not really Tom Hardy (sorry)
-										</figcaption>
-									</figure>
-									<div class="about-me-info slide-in">
-										<h4 class="about-me-subtitle">Biography</h4>
-										<p class="about-me-text">
-											Sports &#10132; Music &#10132; Fitness &#10132; Software
-										</p>
-										<p class="about-me-text">
-											Check out <a href="./blog/">my blog</a> and
-											<a href="./resume.pdf" target="_blank">my resume</a>
-										</p>
-										<h4 class="about-me-subtitle">Technologies</h4>
-										<p class="about-me-text">
-											HTML, CSS, JavaScript, TypeScript
-										</p>
-										<p class="about-me-text">React, Next, Angular</p>
-										<p class="about-me-text">Tailwind, Sass, Less, MUI</p>
-										<p class="about-me-text">REST, Node, Express, GraphQL</p>
-										<p class="about-me-text">MongoDB, Firebase, DatoCMS</p>
+							</article>
+
+							<article class="project-card">
+								<div class="card-image">
+									<img
+										alt="margaretmonis.com App"
+										src="/assets/portfolio/margaretmonis.com.png"
+									/>
+								</div>
+								<div class="card-content">
+									<h3 class="card-title">margaretmonis.com</h3>
+									<p class="card-desc">My mom's blog</p>
+									<div class="tech-stack">
+										<span class="tech-tag">Next</span>
+										<span class="tech-tag">GraphQL</span>
+										<span class="tech-tag">Firebase</span>
+									</div>
+									<div class="card-actions">
+										<a
+											class="cta cta-primary"
+											href="https://margaretmonis.com"
+											rel="noopener"
+											target="_blank"
+											>Visit Website</a
+										>
+										<a
+											class="cta cta-outline"
+											href="https://github.com/maxmonis/margaretmonis.com"
+											rel="noopener"
+											target="_blank"
+											><img
+												alt="GitHub logo"
+												src="./assets/logos/github.svg"
+											/>View Code</a
+										>
 									</div>
 								</div>
-							</div>
+							</article>
+
+							<article class="project-card">
+								<div class="card-image">
+									<img
+										src="/assets/portfolio/bomb.maxmonis.com.png"
+										alt="BOMB App"
+									/>
+								</div>
+								<div class="card-content">
+									<h3 class="card-title">BOMB</h3>
+									<p class="card-desc">Online multiplayer game</p>
+									<div class="tech-stack">
+										<span class="tech-tag">Node.js</span>
+										<span class="tech-tag">Express</span>
+										<span class="tech-tag">WebSockets</span>
+									</div>
+									<div class="card-actions">
+										<a
+											class="cta cta-primary"
+											href="https://bomb.maxmonis.com"
+											rel="noopener"
+											target="_blank"
+											>Visit Website</a
+										>
+										<a
+											class="cta cta-outline"
+											href="https://github.com/maxmonis/BOMB"
+											rel="noopener"
+											target="_blank"
+											><img
+												alt="GitHub logo"
+												src="./assets/logos/github.svg"
+											/>View Code</a
+										>
+									</div>
+								</div>
+							</article>
+
+							<article class="project-card">
+								<div class="card-image">
+									<img
+										src="/assets/portfolio/alcalandrea.com.png"
+										alt="WeatherNow App"
+									/>
+								</div>
+								<div class="card-content">
+									<h3 class="card-title">alcalandrea.com</h3>
+									<p class="card-desc">My girlfriend's portfolio</p>
+									<div class="tech-stack">
+										<span class="tech-tag">Next</span>
+										<span class="tech-tag">TypeScript</span>
+										<span class="tech-tag">Tailwind</span>
+									</div>
+									<div class="card-actions">
+										<a
+											class="cta cta-primary"
+											href="https://alcalandrea.com"
+											rel="noopener"
+											target="_blank"
+											>Visit Website</a
+										>
+										<a
+											class="cta cta-outline"
+											href="https://github.com/alcalandrea/alcalandrea.com"
+											rel="noopener"
+											target="_blank"
+											><img
+												alt="GitHub logo"
+												src="./assets/logos/github.svg"
+											/>View Code</a
+										>
+									</div>
+								</div>
+							</article>
 						</div>
-					</div>
-				</main>
+					</main>
+				</div>
 			</div>
 			<footer class="page-footer">
 				<p>Made with ☕️ by Max Monis</p>
@@ -455,7 +388,7 @@
 		<script>
 			var timeout = setTimeout(function () {
 				if (window.scrollY === 0)
-					document.querySelector(".hero-image").classList.add("hide");
+					document.querySelector(".mad-max-image").classList.add("hide");
 			}, 3000);
 			window.onscroll = function () {
 				clearTimeout(timeout);

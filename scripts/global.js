@@ -28,13 +28,13 @@ window.addEventListener("resize", function () {
 	if (window.innerWidth > 699) checkbox.checked = false;
 });
 document.addEventListener("click", function (event) {
-	if (!document.querySelector(".page-nav").contains(event.target))
+	if (!document.querySelector(".nav-menu").contains(event.target))
 		checkbox.checked = false;
 });
 document.addEventListener("keyup", function (event) {
 	if (event.key === "Escape") checkbox.checked = false;
 	else if (event.key === "Tab")
-		checkbox.checked = document.querySelector(".page-nav a:focus") !== null;
+		checkbox.checked = document.querySelector(".nav-menu a:focus") !== null;
 });
 
 var observer = new IntersectionObserver(function (entries) {
@@ -51,7 +51,7 @@ window.addEventListener(
 		var newScrollY = window.scrollY;
 		var hidden = newScrollY > 10 && newScrollY > oldScrollY;
 		if (hidden) checkbox.checked = false;
-		document.querySelector(".page-header").classList.toggle("hidden", hidden);
+		document.querySelector(".page-nav").classList.toggle("hidden", hidden);
 		oldScrollY = newScrollY;
 	},
 	{ passive: true }
