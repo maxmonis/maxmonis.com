@@ -19,12 +19,6 @@ html {
 	scroll-behavior: smooth;
 }
 
-@media not all and (min-width: 400px) {
-	html {
-		font-size: 14px;
-	}
-}
-
 @media (min-width: 1500px) {
 	html {
 		font-size: 18px;
