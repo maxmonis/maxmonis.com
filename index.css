@@ -121,19 +121,27 @@ header p {
 }
 
 .hero-image {
+	align-items: center;
 	display: flex;
 	flex: 1;
+	flex-direction: column;
+	gap: 0.75rem;
 	justify-content: center;
 }
 
 .hero-image img {
 	border-radius: 50%;
 	border: 4px solid white;
-	box-shadow: 0 1.25rem 1.5rem -0.25rem color-mix(in oklab, var(--fg1) 20%, transparent);
+	box-shadow: 0 1rem 1.25rem -0.25rem color-mix(in oklab, var(--fg1) 20%, transparent);
 	display: block;
 	height: min(15rem);
 	object-fit: cover;
 	width: min(15rem);
+}
+
+.hero-image figcaption {
+	color: var(--fg2);
+	font-size: 0.75rem;
 }
 
 .projects {
